@@ -1,0 +1,284 @@
+@import "../../../theme/theme.scss";
+
+.container-new.cnt-slider-all{
+    padding: 20px 0 50px 0;
+    .container-filter{
+        display: flex;
+        margin: 30px 0;
+        flex-wrap: wrap;
+        .label-buscar{
+            display: flex;
+            align-items: center;
+            @include fontChico;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+            @include media(minxs) {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                padding: 0 0 20px 0;
+            }
+            @include media(maxxs) {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                padding: 0 0 20px 0;
+            }
+            @include media(sm) {
+            }
+            @include media(md) {
+            }
+            @include media(lg) {
+            }
+        }
+        .content-select-filter{
+            display: flex;
+            padding: 0 0 0 40px;
+            @include media(minxs) {
+                flex-wrap: wrap;
+                width: 100%;
+                padding: 0 0 0 0;
+                justify-content: center;
+                text-align: center;
+            }
+            @include media(maxxs) {
+                flex-wrap: wrap;
+                width: 100%;
+                padding: 0 0 0 0;
+                justify-content: center;
+                text-align: center;
+            }
+            @include media(sm) {
+            }
+            @include media(md) {
+            }
+            @include media(lg) {
+            }
+            .select-filter{
+                cursor: pointer;
+                @include fontChico;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                background: $accent-color;
+                color:#fff;
+                border-bottom: 1px solid #ccc;
+                box-shadow:0px 0px 0px 0px #B8B8B8;
+                transition:all 0.25s ease;
+                text-transform: uppercase;
+                transition:0.1s all ease;
+                font-size : 16px;
+                height:40px;
+                margin: 0 5px;
+                min-width: 130px;
+                @include media(minxs) {
+                    font-size: 13px;
+                    min-width: 90px;
+                }
+                @include media(maxxs) {
+                    font-size: 13px;
+                    min-width: 90px;
+                }
+                @include media(sm) {
+                }
+                @include media(md) {
+                }
+                @include media(lg) {
+                }
+                &:active{
+                    top:0px;
+                    border: 1px solid #ccc;
+                    color:$accent-color;
+                    background-color:#ededed;
+                    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.15);
+                }
+                &.active{
+                  top:0px;
+                  border: 1px solid #ccc;
+                  color:$accent-color;
+                  background-color:#ededed;
+                  box-shadow: inset 0px 0px 4px rgba(0,0,0,0.15);
+                }
+            }
+        }
+    }
+    .container-busca{
+        .content-lista{
+            display: flex;
+            flex-wrap: wrap;
+            list-style:none;
+            padding: 0;
+            margin: 0;
+            &.ver-mas{
+                max-height: 344px;
+                overflow: hidden;
+            }
+            .content-marca-item{
+                padding: 3px 3px 3px 3px;
+                @include media(minxs) {
+                    width: 50%;
+                }
+                @include media(maxxs) {
+                    width: 25%;
+                }
+                @include media(sm) {
+                    width: 16.666%;
+                }
+                @include media(md) {
+                    width: 12.5%;
+                }
+                @include media(lg) {
+                    width: 12.5%;
+                }
+                a{
+                    text-decoration: none;
+                    height: 100%;
+                    width: 100%;
+                    .content-item{
+                        position: relative;
+                        @include card-shadow(1);
+                        &:hover{
+                            .content-detail{
+                                opacity: 1;
+                            }
+                        }
+                        .content-info{
+                            &.title-category{
+                                .image-item{
+                                    height: 124px;
+                                    img{
+                                    }
+                                }
+                                .title-item{
+                                    @include ajustatexto;
+                                    flex-wrap: wrap;
+                                    height: 40px;
+                                    line-height: 1;
+                                    font-size: 12px;
+                                }
+                            }
+                            .image-item{
+                                padding: 5px;
+                                height: 140px;
+                                display: flex;
+                                justify-content: center;
+                                text-align: center;
+                                align-items: center;
+                                img{
+                                    max-width: 100%;
+                                    max-height: 100%;
+                                }
+                            }
+                            .title-item{
+                                height: 26px;
+                                color: $primary-text-color;
+                                display: flex;
+                                justify-content: center;
+                                text-align: center;
+                                align-items: center;
+                                flex-wrap: nowrap;
+                                background: $fondos;
+                                text-transform: capitalize;
+                                padding: 0 2px 0 2px;
+                                @include ajustacontrespuntos;
+                                @include fontChico;
+                            }
+                        }
+                        .content-detail{
+                            position: absolute;
+                            opacity: 0;
+                            left: 0;
+                            top: 0;
+                            height: 100%;
+                            width: 100%;
+                            background: rgba(0,0,0, .75);
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            text-align: center;
+                            align-items: center;
+                            @include ease-default;
+                            .title-cantidad{
+                                color: $accent-color;
+                                padding: 0px 0 10px 0;
+                            }
+                            .btn-ver{
+                                display: flex;
+                                justify-content: center;
+                                text-align: center;
+                                align-items: center;
+                                background: $accent-color;
+                                height: 23px;
+                                padding: 0 5px;
+                                text-transform: uppercase;
+                                color: #f2f2f2;
+                                border-radius: 6px;
+                                padding: 2px 10px 2px 10px;
+                                margin: 0 0 20px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .content-btn-ver-mas{
+            &.company-mobile{
+                @include media(minxs) {
+                }
+                @include media(maxxs) {
+                    display: none;
+                }
+                @include media(sm) {
+                    display: none;
+                }
+                @include media(md) {
+                    display: none;
+                }
+                @include media(lg) {
+                    display: none;
+                }
+            }
+            .btn-ver-mas{
+                color: $accent-color;
+                cursor: pointer;
+                font-size: 18px;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 20px 0 0 0;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.container-maqs-fade{
+    position: relative;
+    padding:0;
+    >.principal{
+        position: absolute;
+        top: 0;
+        left:-200%;
+        transition:all 0.35s ease;
+        max-height: 200px;
+        overflow: hidden;
+        opacity: 0;
+        z-index: -500;
+        @include media(tb){
+            margin:0 -5px 0 -5px;
+        }
+        &.step-activo{
+            position: relative;
+            left: 0;
+            opacity: 1;
+            margin: 0 auto;
+            width: inherit;
+            z-index: 500;
+            max-height: none;
+            overflow: visible;
+        }
+    }
+}

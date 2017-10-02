@@ -1,0 +1,105 @@
+@import "../../../theme/theme.scss";
+.fondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index:10000000;
+    width: 100vw;
+    height: 100vh;
+    transition: all 50ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.informate-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    .informate-content{
+        position: relative;
+        overflow: hidden;
+        @include fontChico;
+        @include media(minxs){
+            width: 100vw;
+            height: 100vh;
+        }
+        @include media(maxxs){
+            width: 100vw;
+            height: 100vh;
+        }
+        @include media(sm){
+            width: 410px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+        }
+        @include media(md){
+            width: 410px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+        }
+        @include media(lg){
+            width: 410px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+        }
+        .informate-title{
+            background-color: #607D8B;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 20px 30px;
+        }
+        .img-close{
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            width: 21px;
+            height: 21px;
+            cursor: pointer;
+            img{
+                height: 100%;
+            }
+        }
+        .informate-form{
+            min-height: 266px;
+            height: 100%;
+            padding: 45px 50px;
+            background: white;
+            @include media(minxs){
+                padding: 70px 50px 45px 50px;
+            }
+            @include media(maxxs){
+                padding: 70px 50px 45px 50px;
+            }
+            @include media(sm){
+            }
+            @include media(md){
+            }
+            @include media(lg){
+            }
+            button{
+                font-size: 14px;
+                width: 100%;
+                color: white;
+                font-weight: bold;
+                margin-top: 15px;
+                background-color: #FF5722;
+                border-radius: 6px;
+                padding: 8px 0 8px 0;
+                cursor: pointer;
+                box-shadow: $border-shadow-bread;
+                @include fontChico;
+            }
+            button:active{
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+            }
+        }
+    }
+
+}

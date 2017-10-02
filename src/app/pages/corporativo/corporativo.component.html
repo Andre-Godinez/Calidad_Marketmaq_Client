@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="eq-container-breadcrumb">
+  <div class="eq-breadcrumb container-new">
+    <div  [routerLink]="['/home']"
+          class="eq-breadcrumb-atras">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <ul>
+      <li class="item-breadcrumb">
+        <div [routerLink]="['/home']" class="breadcrumb-text">Home</div>
+        <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+      </li>
+      <li class="item-breadcrumb">
+        <div [routerLink]="['/publicar-corporativo']" class="breadcrumb-text">Corporativo</div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="form-corporativo">
+  <h2>Clientes Corporativos</h2>
+    <form  #formlogin="ngForm" class="eq-login-form" novalidate="novalidate">
+                        <div class="eq-login-pass">
+                            <md-input-container class="full-width">
+                                <input mdInput  placeholder="Nombre completo"
+                                        name="nombre"
+                                        type="text"
+                                        [(ngModel)]="nombrelimp"
+                                        required>
+                            </md-input-container>
+                        </div>
+                        <div class="eq-login-email">
+                            <md-input-container class="full-width">
+                                <input mdInput placeholder="Correo electronico"
+                                        name="email"
+                                        [(ngModel)]="emaillimp"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                        #pru="ngModel"
+                                        FormControlName="emaila"
+                                        required>
+                            </md-input-container>
+                            <div *ngIf="pru.errors?.pattern" class="tipo_letra">El campo no tiene el formato de correo, por favor ingrese un correo valido</div>
+                        </div>
+                <button (click)="enviarMailCoorp(formlogin.value.nombre,formlogin.value.email); inf=!inf;"
+                        class="eq-btn-enviar">
+                            Recibir información
+                </button>
+    </form>
+</div>
+<app-footer></app-footer>
+<app-easymodal [dataconfig]="misdatosdataconfig" (pasaBtnmodal)="showBtnmodal($event)"></app-easymodal>

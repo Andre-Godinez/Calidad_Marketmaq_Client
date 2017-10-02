@@ -1,0 +1,68 @@
+<div [ngClass]="{active:btnranking}"
+    class="eq-fondo-logingris">
+</div>
+<div [ngClass]="{active:btnranking}" class="eq-fondo-login">
+    <div class="eq-container-login">
+        <div (click)="btnranking = false; lanzar($event);"
+            class="eq-login-close">
+            <img src="assets/icon/close.png" alt="Icono easymaq para boton de cerrado login">
+        </div>
+
+        <div class="eq-content-login active">
+            <div class="eq-login-header">
+                <div class="eq-login-title">Califica al usuario</div>
+            </div>
+            <div class="eq-login-body">
+                <div class="eq-login-social">
+                    <div class="eq-ranking-logo">
+                      <div class="icon-content">
+                        <i class="material-icons">person</i>
+                      </div>
+                    </div>
+                    <!--<div class="eq-ranking-logo">
+                      <img src="assets/icon/facebook.png" alt="">
+                    </div>-->
+                    <div class="eq-ranking-star">
+                      <div class="ratingControl">
+                        <div [ngClass]="{'active':numEstrellas*10 >= 50,'ani-tada':btntada >= 5}"
+                            (click)="numEstrellas = 5; animateTada(5);"
+                            class="ratingControl-stars ratingControl-stars--5" ></div>
+                        <div [ngClass]="{'active':numEstrellas*10 >= 40,'ani-tada':btntada >= 4}"
+                            (click)="numEstrellas = 4; animateTada(4);"
+                             class="ratingControl-stars ratingControl-stars--4" ></div>
+                        <div [ngClass]="{'active':numEstrellas*10 >= 30,'ani-tada':btntada >= 3}"
+                              (click)="numEstrellas= 3; animateTada(3);"
+                             class="ratingControl-stars ratingControl-stars--3" ></div>
+                        <div [ngClass]="{'active':numEstrellas*10 >= 20,'ani-tada':btntada >= 2}"
+                            (click)="numEstrellas= 2; animateTada(2);"
+                            class="ratingControl-stars ratingControl-stars--2" ></div>
+                        <div [ngClass]="{'active':numEstrellas*10 >= 10,'ani-tada':btntada >= 1}"
+                            (click)="numEstrellas= 1; animateTada(1);"
+                            class="ratingControl-stars ratingControl-stars--1"></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="eq-login-form">
+                    <div class="eq-login-email">
+                        <md-input-container class="full-width">
+                            <input mdInput placeholder="Titulo"
+                                    name="tituloEstrellas"
+                                    [(ngModel)]="tituloEstrellas">
+                        </md-input-container>
+                    </div>
+                    <div class="eq-login-pass">
+                        <md-input-container class="full-width">
+                            <textarea mdInput placeholder="Descripcion"
+                                    name="descripcionEstrellas"
+                                    [(ngModel)]="descripcionEstrellas"></textarea>
+                        </md-input-container>
+                    </div>
+                    <div (click)="sendRank(); btnranking = false; lanzar($event);" class="eq-btn-enviar">
+                        enviar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+<section class="container-origin">
+  <h1 class="title-h1">Alquila, Compra y Vende Maquinarias en tu pais | Easymaq</h1>
+  <aside class="content-logo-origin">
+    <img class="logo-origin" src="assets/icon/easymaq_logo_blue.png" alt="logo inicial de easymaq">
+  </aside>
+  <aside class="content-country container-new">
+    <ul class="lista-country">
+      <li *ngFor="let country of listCountry"
+          [ngClass]="{'active': country.active, 'enable': country.enable }"
+          class="item-county">
+        <a *ngIf="!country.enable" href="#" (click)="false">
+          <img [src]="country.image" alt="bandera de {{ country.name }}">
+          <span>{{ country.name }}</span>
+        </a>
+        <a *ngIf="country.enable" [routerLink]="[country.urlHref]">
+          <img [src]="country.image" alt="bandera de {{ country.name }}">
+          <span>{{ country.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+</section>
+

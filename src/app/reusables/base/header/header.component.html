@@ -1,0 +1,230 @@
+<header>
+  <nav [ngClass]="{'eq-scroll':navIsFixed, 'home':clasepage=='home','general': clasepage!='home'} " class="content-header">
+    <div class="header">
+      <div class="header-left">
+        <div class="eq-btn-menu">
+          <!-- Icon menu -->
+          <i class="material-icons" (click)="btMenu = !btMenu; eqFondo=true">menu</i>
+        </div>
+        <div class="eq-logo">
+          <a [routerLink]="['/'+fcountry.name+'/home']">
+            <img src="assets/icon/easymaq_logo.png" alt="Logo de easymaq - Peru">
+          </a>
+        </div>
+      </div>
+      <div class="header-right">
+
+        <div class="menu-padre">
+          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">Alquiler</div>
+          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">Venta</div>
+          <!--<div routerLinkActive = "active" class="menu-alquivenope" [routerLink]="['/operarios/operarios-categoria-eq']">Operarios</div>-->
+        </div>
+
+
+        <div class="eq-btn-buscar">
+          <!-- icon lupa -->
+          <i class="material-icons" (click)="btBuscar = !btBuscar; eqFondo=true">search</i>
+        </div>
+        <!-- <h2 class="eq-link-publicar" [routerLink]="['/'+fcountry.name+'/publicar-corporativo']">
+          publicar
+        </h2> -->
+        <h2 class="eq-link-publicar">
+          publicar
+        </h2>
+        <div *ngIf="!_loginService.usuarioEasymaq" (click)="btLogin = true" class="eq-login">
+          ingresar o registrarse
+        </div>
+
+        <div *ngIf="_loginService.usuarioEasymaq" class="eq-login eq-logout " (click)="btOptions = !btOptions;">
+          <div class="eq-login-datos">
+            <div class="eq-login-name">{{ _loginService.usuarioEasymaq.firstName }}</div>
+            <div class="eq-login-email">{{ _loginService.usuarioEasymaq.email }}</div>
+          </div>
+          <div *ngIf="_loginService.usuarioEasymaq.picture" class="eq-login-foto">
+            <img [src]="_loginService.usuarioEasymaq.picture" alt="Photo de usuario easymaq">
+          </div>
+          <div *ngIf="!_loginService.usuarioEasymaq.picture" class="eq-login-foto">
+            <i class="material-icons">person</i>
+          </div>
+          <div [ngClass]="{'active': btOptions}" class="eq-content-options">
+            <ul>
+              <li class="item-option">
+                <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']">
+                  <div class="option-icon"><i class="material-icons">favorite</i></div>
+                  <div class="option-menu-link">Mis favoritos</div>
+                </a>
+              </li>
+              <li (click)="logout()" class="item-option">
+                <a href="">
+                  <div class="option-icon"><i class="material-icons">power_settings_new</i></div>
+                  <div class="option-menu-link">Cerrar sesión</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Fin Menu Options del usuario al iniciar session -->
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Inicio Menu lateral - Mobile -->
+<section>
+  <div [ngClass]="{active:btMenu}" class="eq-content-menu">
+
+    <!-- Inicio Login usuario / visualizado de datos logueado -->
+    <div *ngIf="!_loginService.usuarioEasymaq" class="eq-menu-header">
+      <div class="eq-menu-logo">
+        <div class="icon-menu-logo-user">
+          <i class="material-icons">person</i>
+          <!--<img src="" alt="">-->
+        </div>
+      </div>
+      <div class="eq-content-texto">
+        <div (click)="btLogin = true; btMenu = false; eqFondo=false" class="eq-menu-title">
+          Ingresar
+        </div>
+        <div (click)="btLogin = true; btMenu = false; eqFondo=false" class="eq-menu-subtitle">
+          Crear cuenta o iniciar sessión
+        </div>
+      </div>
+    </div>
+    <div *ngIf="_loginService.usuarioEasymaq" class="eq-menu-header logout">
+      <div class="eq-menu-logo">
+        <div *ngIf="_loginService.usuarioEasymaq.picture" class="icon-menu-logo-user">
+          <img [src]="_loginService.usuarioEasymaq.picture" alt="Photo de usuario easymaq">
+        </div>
+        <div *ngIf="!_loginService.usuarioEasymaq.picture" class="icon-menu-logo-user">
+          <i class="material-icons">person</i>
+          <!--<img src="" alt="">-->
+        </div>
+      </div>
+      <div class="eq-content-texto">
+        <div class="eq-menu-title">
+          <!-- <a [routerLink]="['/cuenta']">{{ _loginService.usuarioEasymaq.firstName }}</a> -->
+          <a>{{ _loginService.usuarioEasymaq.firstName }}</a>
+        </div>
+        <div class="eq-menu-subtitle">{{ _loginService.usuarioEasymaq.email }}</div>
+      </div>
+    </div>
+    <!-- Fin Login usuario / visualizado de datos logueado -->
+
+    <div class="eq-menu-body">
+      <ul class="mobile-menu-items">
+        <li class="eq-menu-item">
+          <a [routerLink]="['/'+fcountry.name+'/home']">
+            <div class="eq-icon">
+              <i class="material-icons">home</i>
+              <!--<div class="eq-icon-easymaq">
+                <img src="" alt="">
+              </div>-->
+            </div>
+            <div class="eq-menu-link">Inicio</div>
+          </a>
+        </li>
+        <li class="eq-menu-item barra-bottom">
+          <!-- <a [routerLink]="['/'+fcountry.name+'/publicar-corporativo']">
+            <div class="eq-icon"><i class="material-icons">camera_alt</i></div>
+            <div class="eq-menu-link">Publicar</div>
+          </a> -->
+          <a>
+            <div class="eq-icon"><i class="material-icons">camera_alt</i></div>
+            <div class="eq-menu-link">Publicar</div>
+          </a>
+        </li>
+        <li class="eq-menu-item">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">
+            <div class="eq-icon"><i class="material-icons">shopping_cart</i></div>
+            <div class="eq-menu-link">Venta</div>
+          </a>
+        </li>
+        <li class="eq-menu-item">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">
+            <div class="eq-icon"><i class="icon-menu-maquina"></i></div>
+            <div class="eq-menu-link">Alquiler</div>
+          </a>
+        </li>
+        <li class="eq-menu-item">
+          <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']" >
+              <div class="eq-icon"><i class="material-icons">favorite</i></div>
+              <div class="eq-menu-link">Mis favoritos</div>
+          </a>
+        </li>
+        <!--<li class="eq-menu-item">
+          <a [routerLink]="['/operarios/operarios-categoria-eq']">
+            <div class="eq-icon"><i class="icon-Operario"></i></div>
+            <div class="eq-menu-link">Operarios</div>
+          </a>
+        </li>-->
+        <!-- <li *ngIf="_loginService.usuario" class="eq-menu-item barra-top">
+          <a [routerLink]="['/cuenta']">
+            <div class="eq-icon"><i class="material-icons">person</i></div>
+            <div class="eq-menu-link">Mi cuenta</div>
+          </a>
+        </li> -->
+        <!--<li class="eq-menu-item">
+          <a href="">
+            <div class="eq-icon"><i class="material-icons">forum</i></div>
+            <div class="eq-menu-link">Mis mensajes</div>
+          </a>
+        </li>
+        <li class="eq-menu-item">
+          <a href="">
+            <div class="eq-icon"><i class="material-icons">star_border</i></div>
+            <div class="eq-menu-link">Mis favoritos</div>
+          </a>
+        </li>
+        <li class="eq-menu-item">
+          <a href="">
+            <div class="eq-icon"><i class="material-icons">trending_up</i></div>
+            <div class="eq-menu-link">Mis estadisticas</div>
+          </a>
+        </li>-->
+        <li *ngIf="_loginService.usuarioEasymaq" (click)="logout()" class="eq-menu-item sin-link barra-top">
+          <div class="eq-icon"><i class="material-icons">power_settings_new</i></div>
+          <div class="eq-menu-link">Cerrar sesión</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- Fin  Menu lateral - Mobile -->
+
+
+
+<!-- Inicio Buscador - Mobile -->
+<section>
+  <div [ngClass]="{active:btBuscar}" class="eq-content-buscar">
+    <div class="eq-select-buscador-general">
+      <div class="eq-pestanas">
+        <div [ngClass]="{'active':cli=='venta'}" (click)="valueOperacion='venta'; cli = 'venta';" class="item-pestana">Venta</div>
+        <div [ngClass]="{'active':cli=='alquiler'}" (click)="valueOperacion='alquiler'; cli = 'alquiler';" class="item-pestana">Alquiler</div>
+        <!--<div [ngClass]="{'active':cli=='operarios'}" (click)="valueOperacion='operarios'; cli = 'operarios';" class="item-pestana">Operarios</div>-->
+      </div>
+    </div>
+    <div class="eq-menu-buscar">
+      <div (click)="btMenu = false;btBuscar = false;eqFondo=false;" class="buscar-icon-atras">
+        <i class="material-icons">arrow_back</i>
+      </div>
+      <div class="eq-buscar-input">
+        <!-- <input type="text" [(ngModel)]="valueGeneral" name="valueGeneral" (keyup.enter)="buscadorGeneralEasymaq('mobile-maquinaria')"
+          placeholder="Buscar marca..."> -->
+      </div>
+      <div *ngIf="valueGeneral" (click)="limpiaBuscadorMobile()" class="buscar-icon-limpiar"><i class="material-icons">clear</i></div>
+    </div>
+  </div>
+</section>
+<!-- Inicio Buscador - Mobile -->
+
+
+<section>
+  <!-- <app-login [btnlogin]="btLogin" (pasaBtnlogin)="showBtnlogin($event)">
+  </app-login> -->
+  <app-cuppaoauth [btnlogin]="btLogin" (pasaBtnlogin)="showBtnlogin($event)"></app-cuppaoauth>
+</section>
+
+
+<section [ngClass]="{active: eqFondo, zindex9000: btOptions}" (click)="btMenu = false; btBuscar = false; btOptions = false; eqFondo=false"
+  class="eq-fondo"></section>

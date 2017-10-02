@@ -1,0 +1,290 @@
+@import "../../theme/theme.scss";
+
+.eq-fondo-logingris{
+    position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0);
+	z-index: -1;
+    width: 100vw;
+    height: 100vh;
+	@include transitiondefault(50ms);
+	&.active{
+		background: rgba(0, 0, 0, .5);
+		z-index: 20000;
+	}
+}
+
+.eq-fondo-login{
+    position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0);
+	z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+	@include transitiondefault(50ms);
+
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(center);
+    text-align: center;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    // @include flex(1, 1, 0);
+	&.active{
+		z-index: 20000;
+        opacity: 1;
+        .eq-container-login{
+            // background: red;
+            position: relative;
+            @include transitiondefault(500ms);
+            @include media(minxs) {
+                @include flex(0, 0, 100vw);
+                height: 100vh;
+            }
+            @include media(maxxs) {
+                @include flex(0, 0, 100vw);
+                height: 100vh;
+            }
+            @include media(sm) {
+                @include flex(0, 0, 650px);
+                height: 510px;
+            }
+            @include media(md) {
+                @include flex(0, 0, 650px);
+                height: 510px;
+            }
+            @include media(lg) {
+                @include flex(0, 0, 650px);
+                height: 510px;
+            }
+            .eq-login-close{
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                height: 21px;
+                width: 21px;
+                cursor: pointer;
+                z-index: 101;
+                img{
+                    height: 100%;
+                }
+            }
+            .eq-content-login{
+                height: 100%;
+                width: 100%;
+                background: $fondos;
+                opacity: 0;
+                z-index: -100;
+                // overflow: hidden;
+                display: none;
+                @include media(minxs) {
+                }
+                @include media(maxxs) {
+                }
+                @include media(sm) {
+                    border-radius: 20px;
+                }
+                @include media(md) {
+                    border-radius: 20px;
+                }
+                @include media(lg) {
+                    border-radius: 20px;
+                }
+                &.active{
+                    opacity: 1;
+                    z-index: 100;
+                    @include card-shadow(2);
+                    @include flexbox();
+                    @include flex-direction(column);
+                    @include justify-content(flex-start);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                }
+                .eq-login-header{
+                    position: relative;
+                    background: $primary-color;
+                    width: 100%;
+                    @include prefixer(box-shadow, 0 6px 6px rgba(0, 0, 0, 0.16));
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                    @include media(minxs) {
+                        height: 140px;
+                    }
+                    @include media(maxxs) {
+                        height: 140px;
+                    }
+                    @include media(sm) {
+                        height: 110px;
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 20px;
+                    }
+                    @include media(md) {
+                        height: 110px;
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 20px;
+                    }
+                    @include media(lg) {
+                        height: 110px;
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 20px;
+                    }
+                    .eq-login-atras{
+                        cursor: pointer;
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        color: $fondos;
+                    }
+                    .eq-login-title{
+                        text-transform: uppercase;
+                        color: $primary-color-text;
+                        letter-spacing: 6px;
+                        @include fontMedio;
+	                    @include pefontsizeheight(32px,1,32px,1,22px,1);
+                    }
+                }
+                .eq-login-body{
+                    @include media(minxs) {
+                        width: 85%;
+                    }
+                    @include media(maxxs) {
+                        width: 80%;
+                    }
+                    @include media(sm) {
+                        width: 410px;
+                    }
+                    @include media(md) {
+                        width: 410px;
+                    }
+                    @include media(lg) {
+                        width: 410px;
+                    }
+                    .eq-login-social{
+                        padding: 15px 0 0 0;
+                        .eq-ranking-logo{
+                            padding: 0 0 10px 4px;
+                            height: 100%;
+                            @include flexbox();
+                            @include flex-direction(row);
+                            @include justify-content(center);
+                            text-align: center;
+                            @include align-items(center);
+                            // @include flex-wrap(wrap);
+                            // @include flex(1, 1, 0);
+                            .icon-content{
+                                height: 100px;
+                                width: 100px;
+                                border-radius: 100%;
+                                background: $primary-color-dark;
+                                @include flexbox();
+                                @include flex-direction(row);
+                                @include justify-content(center);
+                                text-align: center;
+                                @include align-items(center);
+                                // @include flex-wrap(wrap);
+                                // @include flex(1, 1, 0);
+                                i{
+                                    font-size: 90px;
+                                    color: #fff;
+                                }
+                            }
+                            img{
+                                height: 100px;
+                                width: 100px;
+                                border-radius: 100%;
+                            }
+                        }
+                        .eq-ranking-star{
+                            @include flexbox();
+                            @include flex-direction(row);
+                            @include justify-content(center);
+                            text-align: center;
+                            @include align-items(center);
+                            // @include flex-wrap(wrap);
+                            // @include flex(1, 1, 0);
+                            @include starFijo(45px,5px,5){
+                                cursor: pointer;
+                            };
+                        }
+                    }
+                    .eq-login-form{
+                        .eq-login-email{
+                            @include leost03;
+                        }
+                        .eq-login-pass{
+                            @include leost03;
+                            textarea{
+                                max-height: 60px;
+                            }
+                        }
+                        .eq-btn-enviar{
+                            padding: 6px 0 6px 0;
+                            background: $accent-color;
+                            border-radius: 6px;
+                            cursor: pointer;
+                            color: $primary-color-text;
+                            text-transform: uppercase;
+                            @include leotx03btn;
+                            @include card-shadow(1);
+                            @include transitiondefault(150ms);
+                            &:active{
+                                @include card-shadow(3);
+                            }
+                        }
+                    }
+                    .eq-login-access{
+                        height: 60px;
+                        @include flexbox();
+                        @include flex-direction(row);
+                        // @include justify-content(center);
+                        // text-align: center;
+                        @include align-items(center);
+                        // @include flex-wrap(wrap);
+                        // @include flex(1, 1, 0);
+                        .eq-login-olvido{
+                            color: $accent-color;
+                            @include leotx03rgt;
+                        }
+                        .eq-login-registro{
+                            margin-left: auto;
+                            color: $accent-color;
+                            cursor: pointer;
+                            text-transform: uppercase;
+                            @include leotx03rgt;
+                        }
+                    }
+                    .eq-register-access{
+                        height: 60px;
+                        @include flexbox();
+                        @include flex-direction(column);
+                        @include justify-content(center);
+                        text-align: center;
+                        @include align-items(center);
+                        // @include flex-wrap(wrap);
+                        // @include flex(1, 1, 0);
+                        .eq-tienes-text{
+                            color: $light-secundary-text;
+                            @include leotx03rgt;
+                        }
+                        .eq-login-cuenta{
+                            color: $accent-color;
+                            cursor: pointer;
+                            @include leotx03rgt;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+	}
+}

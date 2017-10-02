@@ -1,0 +1,193 @@
+<app-header *ngIf="isBrowser"></app-header>
+
+<div class="eq-container-breadcrumb bread-box" *ngIf="isBrowser">
+  <div class="eq-breadcrumb container-new">
+    <div [routerLink]="['/home']" class="eq-breadcrumb-atras">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <ul>
+      <li class="item-breadcrumb">
+        <div [routerLink]="['/home']" class="breadcrumb-text">Home</div>
+        <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+      </li>
+      <!--<li class="item-breadcrumb">
+        <div [routerLink]="['/maquinarias/maquinarias-categoria-eq']" class="breadcrumb-text">Maquinarias</div>
+        <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+      </li>-->
+      <li class="item-breadcrumb">
+        <div class="breadcrumb-text">Maquina</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="eq-container-detalle" *ngIf="publication && isBrowser">
+  <div class="container-new">
+    <div class="container-detalle-slider">
+      <div class="container-detalle-slider-normal big-detail-image">
+        <div class="content-detalle-slider-normal big-detail-image_select">
+          <img [src]="imagenSeleccionada" alt="Maquinaria pesada: {{ publication.category.name }} - marca: {{ publication.brand.name }} - modelo: {{ publication.modelo }}">
+        </div>
+      </div>
+      <div class="preview-detail-image">
+        <div class="preview-detail-image_slider">
+          <div *ngFor="let imagen of publication.urlImages" class="item-preview-image">
+            <!--<img [attr.data-lazy]="imagen" alt="Imagen de una maquinaria publicada en easymaq" (click)="imagenSeleccionada = imagen">-->
+            <img style="cursor: pointer;" [src]="imagen" alt="Maquinaria pesada: {{ publication.category.name }} - marca: {{ publication.brand.name }} - modelo: {{ publication.modelo }}" (click)="imagenSeleccionada = imagen">
+          </div>
+        </div>
+        <!--<div class="carouselcard-prev">
+            <i class="material-icons">keyboard_arrow_right</i>
+        </div>
+        <div class="carouselcard-next">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </div>-->
+      </div>
+      <div class="preview-detail-mobile preview-mobile-slider">
+        <ngb-carousel *ngIf="isBrowser">
+          <div *ngFor="let imagen of publication.urlImages">
+            <!-- <img [attr.data-lazy]="imagen" alt="Maquinaria publicada en easymaq"> -->
+            <ng-template ngbSlide>
+              <img [src]="imagen" alt="Maquinaria pesada: {{ publication.category.name }} - marca: {{ publication.brand.name }} - modelo: {{ publication.modelo }}">
+            </ng-template>
+          </div>
+        </ngb-carousel>
+        <!-- <div *ngFor="let imagenmob of publication.urlImages" class="">
+          <img [src]="imagenmob" alt="Imagen de una maquinaria publicada en easymaq">
+        </div> -->
+      </div>
+    </div>
+    <div class="detail-mpub">
+      <div class="eq-maquina-title">
+        <div class="eq-maquina-title_left">
+          <h2 class="maquina-name">{{ publication.brand.name }}
+            <span class="maquina-marca">{{ publication.modelo }}</span>
+          </h2>
+          <div class="sub-cat-model">{{ publication.category.name }}</div>
+        </div>
+        <div class="price-detail-pub">
+          <div *ngIf="!publication.prConsultar" class="detalle-precio">{{ publication.moneda }} {{ publication.prPrecio }}</div>
+          <div *ngIf="publication.prConsultar" class="detalle-precio"> {{ 'CONSULTAR' }}</div>
+          <div class="content-rating-stars" (click)="openRanking()">
+            <div class="ratingControl">
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+              <div [ngClass]="{'active':publication.rkStarTotal*10 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-mpub_value">
+        <div class="content-rating-stars" (click)="openRanking()">
+          <div class="ratingControl">
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+            <div [ngClass]="{'active':publication.rkStarTotal*10  >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+          </div>
+        </div>
+        <div class="detail-mpub__shared">
+          <div (click)="btnMapaAtras = true;" class="content-acceso-mapa detail-mpub__common">
+            <i class="material-icons cm_color">room</i>
+            <!--<i class="material-icons">my_location</i>-->
+          </div>
+          <div class="content-acceso-mensaje detail-mpub__common">
+            <a href="mailto:{{publication.ctEmail}}">
+              <i class="material-icons cm_color">send</i>
+            </a>
+          </div>
+          <div [ngClass]="{'active-favorite-maq': miMaquinaFavorito}" class="container-star-maq  detail-mpub__common">
+            <div class="maquina-star border-favorite opera-star">
+              <i class="material-icons cm_color">favorite_border</i>
+            </div>
+            <div class="maquina-star complete-favorite opera-star">
+              <i class="material-icons rojo">favorite</i>
+            </div>
+          </div>
+          <div class="container-shared detail-mpub__common">
+            <i class="material-icons cm_color shared-icon" (click)="sbtns=!sbtns">share</i>
+            <share-buttons [url]="linkshared" *ngIf="sbtns" class="cnt-shared fadeIn">
+            </share-buttons>
+          </div>
+
+          <!--<div class="detail-mpub__sharedbtns">
+                 </div>-->
+
+          <!--<share-container
+                      direction="horizontal"
+                      addedText="your creation"
+                      [expandable]="true"
+                      [textEnabled]="true"
+                      [platforms]="['reddit','twitter','facebook','mail']">
+                  </share-container>-->
+
+        </div>
+      </div>
+      <ul class="detail-mpub_list">
+        <li>OPERACIÓN: <span> {{ publication.operacion }}</span></li>
+        <li>CONDICIÓN: <span> {{ publication.condicion }} </span></li>
+        <li>DIRECCIÓN: <span>{{ publication.uDireccion }}</span></li>
+        <li *ngIf="publication.horasMaquina">HORAS/MAQUINA TRABAJADAS:<span>{{ publication.horasMaquina }}</span></li>
+        <li *ngIf="publication.ctPhone01">TELÉFONO 01: <span>{{ publication.ctPhone01 }}</span></li>
+        <li *ngIf="publication.ctPhone02">TELÉFONO 02: <span>{{ publication.ctPhone02 }}</span></li>
+        <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li>
+        <li *ngIf="publication.company.website">WEBSITE:
+          <span>
+            <a class="url" [href]="'http://'+publication.company.website" target="_blanck" >
+              {{ publication.company.website }}
+            </a>
+          </span>
+        </li>
+      </ul>
+      <div class="detail-mpub__descripcion" [ngClass]="{'viewtext': viewmore}">
+        <p>{{ publication.description }}</p>
+        <button (click)="viewmore = !viewmore" class="viewbtn view-more">Ver mas</button>
+        <button (click)="viewmore = !viewmore" class="viewbtn view-less">Ver menos</button>
+      </div>
+      <h5 class="detail-mpub__atencion">HORARIO DE ATENCIÓN: <span>{{ publication.ctHorario }}</span></h5>
+      <div class="detail-mpub_contact">
+        <div class="price-detail-pub">PRECIO:
+          <div *ngIf="!publication.prConsultar" class="detalle-precio">{{ (publication.prMoneda === 'dolares' ? '$' : 'S/') }} {{ publication.prPrecio | number:'1.2-2' }}</div>
+          <div *ngIf="publication.prConsultar" class="detalle-precio"> {{ 'CONSULTAR' }}</div>
+        </div>
+        <!-- <button class="rad-button" (click)="irChat()">
+              <p-confirmDialog header="Información" width="425"></p-confirmDialog>
+              enviar mensaje
+            </button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="eq-container-detalle-mapa" *ngIf="publication && isBrowser" [class.active]="btnMapaAtras">
+  <div class="container-mapa-especial">
+    <div class="content-detalle-mapa">
+      <agm-map *ngIf="isBrowser" [latitude]="publication.location.lat" [longitude]="publication.location.lng" [zoom]="14">
+        <agm-marker [latitude]="publication.location.lat" [longitude]="publication.location.lng"></agm-marker>
+      </agm-map>
+      <div *ngIf="isBrowser" class="btn-mapa-atras" (click)="btnMapaAtras = false;">
+        <i class="icon-cancel-form"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section *ngIf="isBrowser">
+  <app-ranking *ngIf="publication" [btnranking]="btRanking" (pasaBtnranking)="showBtranking($event)" (rankTotal)="recibir($event)" [publicationrank]="publication" [tituloEstrellas]="titlerank" [numEstrellas]="starsrank" [descripcionEstrellas]="descriprank"></app-ranking>
+</section>
+
+<app-footer *ngIf="isBrowser"></app-footer>
+<app-easymodal *ngIf="isBrowser" [dataconfig]="misdatosdataconfig"></app-easymodal>

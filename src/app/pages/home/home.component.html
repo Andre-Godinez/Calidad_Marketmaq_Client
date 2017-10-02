@@ -1,0 +1,91 @@
+<section style="display:none">
+  <h1>Alquila, Compra y Vende Maquinarias | Easymaq</h1>
+</section>
+
+<app-header *ngIf="isBrowser" [clasepage]="clasepage"></app-header>
+
+<app-slider *ngIf="isBrowser"></app-slider>
+<app-buscarpor *ngIf="isBrowser"></app-buscarpor>
+<div class="eq-general-title botones-valen">
+  <section class="menu-maq-vale container">
+    <!--<div class="eq-vale-text">últimas maquinarias</div>-->
+    <h2 class="eq-vale-text">últimas maquinarias</h2>
+    <div [ngClass]="{'active':bot}" (click)="bot=true; bot2=false; actualizarslider('alquiler');" class="btn-alquiler">Alquiler</div>
+    <div [ngClass]="{'active':bot2}" (click)="bot2=true; bot=false; actualizarslider('venta');" class="btn-venta">Venta</div>
+  </section>
+</div>
+
+ <div class="principal container-all-maqs container-new_smq step-activo">
+  <div class="contenedor-ult">
+    <card-maquina-component *ngFor="let maquina of ultimasPubli; let i = index" [maquina]="maquina"></card-maquina-component>
+    <!-- <div class="contentcar" *ngFor="let maquina of ultimasPubli; let i = index">
+      <div class="eq-slide-card card-maq-new">
+        <div class="eq-maquina-image">
+          <div class="totally-item">
+            <ngb-carousel *ngIf="isBrowser">
+              <div *ngFor="let imagen of maquina.urlImages">
+                <ng-template ngbSlide>
+                  <a [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">
+                          <img [src]="imagen" alt="Maquinaria pesada: {{ maquina.category.name }} - marca: {{ maquina.brand.name }} - modelo: {{ maquina.modelo }}">
+                        </a>
+                </ng-template>
+              </div>
+            </ngb-carousel>
+
+          </div>
+          <div class="count-img">
+            <span>{{ maquina.urlImages.length}}</span>
+            <i class="material-icons">camera_alt</i>
+          </div>
+        </div>
+        <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
+          <div class="maquina-star border-favorite opera-star">
+            <i class="material-icons">favorite_border</i>
+          </div>
+          <div class="maquina-star complete-favorite opera-star">
+            <i class="material-icons rojo">favorite</i>
+          </div>
+        </div>
+        <div class="eq-maquina-title">
+          <div class="sub-cat-model">{{ maquina.category.name }}</div>
+          <h2 class="maquina-name">{{ maquina.brand.name }}
+            <div class="maquina-marca">{{ maquina.modelo }}</div>
+          </h2>
+        </div>
+        <div class="eq-maquina-info">
+          <div class="maquina-ubicacion">
+            <div class="maquina-direccion">{{ maquina.uDepartamento}} - {{ maquina.uProvincia }} - {{ maquina.uDistrito }}
+            </div>
+          </div>
+          <div class="price-points">
+            <div class="price-maqs" (click)="administrar(maquina.$key)">
+              <a *ngIf="!maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">{{ maquina.moneda }} {{ maquina.prPrecio }}</a>
+              <a *ngIf="maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]"> {{ 'CONSULTAR' }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="inf_orange_div">
+  <div class="inf-orange">
+    <div class="if-o-title">
+      ¿Tienes muchas más máquinas<br>que vender?
+    </div>
+    <div class="if-o-text">
+      <p>¡Ahorra con nuestros planes corporativos!</p>
+      <button (click)="informate =!informate">Infórmate aquí</button>
+    </div>
+  </div>
+</div>
+
+<div class="barra"></div>
+
+
+<div *ngIf="informate">
+  <app-informate *ngIf="isBrowser"></app-informate>
+</div>
+
+<app-footer *ngIf="isBrowser"></app-footer>

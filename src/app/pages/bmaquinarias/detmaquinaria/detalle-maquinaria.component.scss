@@ -1,0 +1,502 @@
+@import "../../../theme/theme.scss";
+
+.container{
+}
+
+.eq-container-detalle{
+    .container-new{
+        @include flexbox();
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+        margin-top: 15px;
+        .container-detalle-slider{
+            overflow: hidden;
+            @include flexbox();
+            @include flex-direction(column);
+            @include media(minxs) {
+                width: 100%;
+            }
+            @include media(maxxs) {
+                width: 100%;
+            }
+            @include media(sm) {
+                padding: 0 0 20px 0;
+                width: 100%;
+            }
+            @include media(tbland){
+                padding: 0 0 20px 0;
+                width: 66.666%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .big-detail-image{
+                padding: 0 0 10px 0;
+                text-align: center;
+                .big-detail-image_select{
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+            }
+            .preview-detail-image{
+                @include media(minxs) {
+                    background: $fondos;
+                    width: 100%;
+                }
+                @include media(maxxs) {
+                    background: $fondos;
+                    width: 100%;
+                }
+                @include media(tbland){
+
+                }
+                // .preview-detail-image_slider{
+                //     width: 100%;
+                //     position: relative;
+                //     height: 100%;
+                //         img{
+                //             object-fit: cover;
+                //             width: 100%;
+                //             height: 35vh;
+                //             @include media(mb){
+                //                 height: 50vh;
+                //             }
+                //             @include media(tbland){
+                //                 height: 100%;
+                //             }
+                //         }
+                //     // .carouselcard-prev{
+                //     //     position: absolute;
+                //     //     top: 50%;
+                //     //     left: 0;
+                //     //     z-index: 50;
+                //     //     @include prefixer(transform, translate(0,-50%));
+                //     //     @include media(minxs) {
+                //     //         display: none;
+                //     //     }
+                //     //     .carousel-relative{
+                //     //         position: relative;
+                //     //         height: 32px;
+                //     //         width: 45px;
+                //     //         cursor: pointer;
+                //     //         @include card-shadow(1);
+                //     //         .carousel-relleno{
+                //     //             width: 100%;
+                //     //             height: 100%;
+                //     //             background: rgba($primary-color-text,.7);
+                //     //         }
+                //     //         i{
+                //     //             position: absolute;
+                //     //             top: 50%;
+                //     //             left: 50%;
+                //     //             font-size: 40px;
+                //     //             @include prefixer(transform, translate(-50%,-50%));
+                //     //         }
+                //     //     }
+                //     // }
+                //     // .carouselcard-next{
+                //     //     position: absolute;
+                //     //     top: 50%;
+                //     //     right: 0;
+                //     //     z-index: 50;
+                //     //     @include prefixer(transform, translate(0,-50%));
+                //     //     @include media(minxs) {
+                //     //         display: none;
+                //     //     }
+                //     //     @include media(maxxs) {
+                //     //     }
+                //     //     @include media(sm) {
+                //     //     }
+                //     //     @include media(md) {
+                //     //     }
+                //     //     @include media(lg) {
+                //     //     }
+                //     //     .carousel-relative{
+                //     //         position: relative;
+                //     //         height: 32px;
+                //     //         width: 45px;
+                //     //         cursor: pointer;
+                //     //         @include card-shadow(1);
+                //     //         .carousel-relleno{
+                //     //             width: 100%;
+                //     //             height: 100%;
+                //     //             background: rgba($primary-color-text,.7);
+                //     //         }
+                //     //         i{
+                //     //             position: absolute;
+                //     //             top: 50%;
+                //     //             right: 50%;
+                //     //             font-size: 40px;
+                //     //             @include prefixer(transform, translate(50%,-50%));
+                //     //         }
+                //     //     }
+                //     // }
+                // }
+            }
+        }
+        @include media(tb){
+            margin-top: 30px;
+        }
+    }
+}
+.eq-container-detalle-mapa{
+    @include media(minxs) {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: -105vw;
+        z-index: 9000;
+        @include transitiondefault(800ms);
+    }
+    @include media(maxxs) {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: -105vw;
+        z-index: 9000;
+        @include transitiondefault(800ms);
+    }
+    @include media(sm) {
+    }
+    @include media(md) {
+    }
+    @include media(lg) {
+    }
+    &.active{
+        @include media(minxs) {
+            left: 0;
+        }
+        @include media(maxxs) {
+            left: 0;
+        }
+        @include media(sm) {
+        }
+        @include media(md) {
+        }
+        @include media(lg) {
+        }
+    }
+    .container-mapa-especial{
+        @include media(minxs) {
+        }
+        @include media(maxxs) {
+        }
+        @include media(sm) {
+            width: 720px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @include media(md) {
+            width: 960px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @include media(lg) {
+            width: 1140px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .content-detalle-mapa{
+            position: relative;
+            @include media(minxs) {
+                top: 45px;
+            }
+            @include media(maxxs) {
+                top: 45px;
+            }
+            @include media(sm) {
+                padding: 0 0 35px 0;
+            }
+            @include media(md) {
+                padding: 0 0 35px 0;
+            }
+            @include media(lg) {
+                padding: 0 0 35px 0;
+            }
+            .sebm-google-map-container {
+                @include media(minxs) {
+                    @include prefixertwo(height, calc(100vh - 45px));
+                }
+                @include media(maxxs) {
+                    @include prefixertwo(height, calc(100vh - 45px));
+                }
+                @include media(sm) {
+                    height: 360px;
+                }
+                @include media(md) {
+                    height: 360px;
+                }
+                @include media(lg) {
+                    height: 360px;
+                }
+            }
+            .btn-mapa-atras{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #FF5722;
+                z-index: 100;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                cursor: pointer;
+                @include cuadrado(40px);
+                @include card-shadow(2);
+                @include transitiondefault(100ms);
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(center);
+                text-align: center;
+                @include align-items(center);
+                // @include flex-wrap(wrap);
+                // @include flex(1, 1, 0);
+                @include media(minxs) {
+                }
+                @include media(maxxs) {
+                }
+                @include media(sm) {
+                    display: none;
+                }
+                @include media(md) {
+                    display: none;
+                }
+                @include media(lg) {
+                    display: none;
+                }
+                &:active{
+                    @include card-shadow(3);
+                }
+                i{
+                    font-size: 12px;
+                    &:before{
+                        color:#fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.url{
+  color: #FF5722;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+
+// .eq-general-descripcion{
+//     .container{
+//         .detalle-text-description{
+//             color: $primary-text-color;
+//             padding: 40px 10px 30px 15px;
+//             @include fontChico;
+//             @include pefontsizeheight(18px,1,18px,1,10px,1.3);
+//         }
+//         .detalle-text-horario{
+//             padding: 0 10px 30px 15px;
+//             @include fontMedio;
+// 	        @include pefontsizeheight(16px,1.3,16px,1.3,16px,1);
+//             span{
+//                 text-transform: uppercase;
+//             }
+//         }
+//     }
+// }
+
+
+
+// .rad-button{
+//     width: 170px;
+//       &:active{//primary active
+//     top:0px;
+//     height:50px;
+//     border: 1px solid #ccc;
+//     color:$accent-color;
+//     background-color:#ededed;
+//     box-shadow: inset 0px 0px 4px rgba(0,0,0,0.15);
+//   }
+// }
+// .detail-mpub_list{
+//     padding: 0;
+//     list-style:none;
+//     margin:0;
+//     li{
+//         @include fontChico;
+//         font-size: 12px;
+//         color:$secondary-text-color;
+//         margin-bottom: 5px;
+//         @include media(tbland){
+//             font-size: 14px;
+//         }
+//     }
+// }
+// .detail-mpub{
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-between;
+//     flex-direction: column;
+//     padding:14px 10px;
+//     @include media(tbland){
+//         width: 33.33%;
+//         padding: 0;
+//     }
+//     .eq-maquina-title{
+//         display: flex;
+//         justify-content: space-between;
+//         .eq-maquina-title_left{
+//             display: flex;
+//             flex-direction: column;
+//             max-width: 65%;
+//             font-size: 14px;
+//             @include ajustacontrespuntos;
+//         }
+//         .maquina-name{
+//             margin:5px 0 10px 0;
+//             order:2;
+//             text-transform: uppercase;
+//             @include fontMedio;
+//             @include ajustacontrespuntos;
+//             font-size: 16px;
+//             span{
+//                 font-size: 12px;
+//             }
+//         }
+//         .sub-cat-model{
+//             color:$secondary-text-color;
+//             text-transform: uppercase;
+//             @include fontChico;
+//             @include ajustacontrespuntos;
+//         }
+//         .price-detail-pub{
+//             display: block;
+//         }
+//         @include media(tbland){
+//             .price-detail-pub{
+//                 display: none;
+//             }
+//             .eq-maquina-title_left{
+//                 max-width: none;
+//             }
+//             .maquina-name{
+//                 font-size: 30px;
+//                 span{
+//                     font-size: 18px;
+//                 }
+//             }
+//             .sub-cat-model{
+//                 font-size: 16px;
+//             }
+//         }
+//         @include media(desk){
+//             .maquina-name{
+//                 font-size: 40px;
+//                 span{
+//                     font-size: 20px;
+//                 }
+//             }
+//         }
+//     }
+// }
+// .price-detail-pub{
+//     font-size: 14px;
+//     display: none;
+//     color:$secondary-text-color;
+//     @include fontChico;
+//     @include media(tbland){
+//         display: block;
+//     }
+//     .detalle-precio{
+//         @include fontMedio;
+//         font-size: 16px;
+//         color:$accent-color;
+//         text-transform: uppercase;
+//     }
+// }
+// .detail-mpub_value{
+//     display: flex;
+//     justify-content: space-between;
+//     @include media(tbland){
+//         order: -1;
+//         padding-bottom: 5px;
+//         margin-bottom: 10px;
+//         border-bottom:1px solid $divider-color;
+//     }
+// }
+// .detail-mpub__shared{
+//     display: flex;
+//     .cm_color{
+//         color:$secondary-text-color;
+//         font-size: 23px;
+//     }
+//     @include media(tbland){
+//         .cm_color{
+//             margin-left: 15px;
+//         }
+//     }
+// }
+// .detail-mpub__descripcion{
+//     @include fontChico;
+//     font-size: 12px;
+//     line-height: 18px;
+//     margin:5px 0;
+//     color:$secondary-text-color;
+//     @include media(tbland){
+//         font-size: 14px;
+//     }
+// }
+// .detail-mpub__atencion{
+//     margin: 5px 0;
+//     @include fontMedio;
+// }
+// .container-star-maq{
+//     position: relative;
+//     height: 26px;
+//     width: 26px;
+//     display: none;
+//     @include media(tb){
+//         display: block;
+//     }
+//     .opera-star{
+//         left: 0;
+//         right: auto;
+//         top: 0;
+//         i{
+//             font-size: 23px;
+//             color:$secondary-text-color;
+//             text-shadow: none;
+//         }
+//     }
+// }
+// .detail-mpub_contact{
+//     display: none;
+//     @include media(tbland){
+//         display: flex;
+//         justify-content: space-between;
+//         margin: 20px 0;
+//     }
+//     .price-detail-pub{
+//         @include media(tbland){
+//             .detalle-precio{
+//                 display: block;
+//                 font-size: 20px;
+//             }
+//         }
+//     }
+// }
+.detail-mpub__shared{
+    position: relative;
+}

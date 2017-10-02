@@ -1,0 +1,13 @@
+// https://github.com/daneden/animate.css
+// https://github.com/geoffgraham/animate.scss
+
+@import "animate-scss/animate.scss";
+
+.ani-tada{
+    // @mixin tada($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault)
+    @include tada();
+}
+.fadeIn{
+    @include fadeIn();
+    @include delay(0.35s);
+}

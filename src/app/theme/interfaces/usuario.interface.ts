@@ -1,0 +1,67 @@
+
+
+export interface Usuario {
+    idusuario ?: string;
+    anonimo: boolean;
+    nombre ?: string;
+    apellido ?: string;
+    email ?: string;
+    emailalter ?: string;
+    genero ?: string;
+    cumple ?: string;
+    edad ?: string;
+    dni ?: string;
+    celular ?: string;
+    telefono ?: string;
+    ocupacion ?: string;
+    foto ?: string;
+    experiencia ?: string;
+    categorias ?: string;
+    opactive ?: boolean;
+    oplinkedin ?: string;
+    opfacebook ?: string;
+    // opnick ?: string;
+    oppresentacion ?: string;
+    udepartamento ?: string;
+    uprovincia ?: string;
+    udistrito ?: string;
+    udireccion ?: string;
+    anunciante ?: boolean;
+    operario  ?: boolean;
+    recibeinfo ?: boolean;
+    emactive ?: boolean;
+    emnombre ?: string;
+    emlogo ?: string;
+    emruc ?: string;
+    rkpublicar : string;
+    rkoperario : string;
+    ft_destacados : boolean;
+    cate01 : string;
+    cate02 : string;
+    cate03 : string;
+    cate04 : string;
+    cate05 : string;
+    cate06 : string;
+    cate07 : string;
+    cate08 : string;
+    cate09 : string;
+    cate10 : string;
+    cate11 : string;
+    cate12 : string;
+    cate13 : string;
+    cate14 : string;
+    cate15 : string;
+    cate16 : string;
+    cate17 : string;
+    cate18 : string;
+    cate19 : string;
+    cate20 : string;
+    cate21 : string;
+    cate22 : string;
+    cate23 : string;
+    cate24 : string;
+    cate25 : string;
+    cate26 : string;
+    cate27 : string;
+}
+

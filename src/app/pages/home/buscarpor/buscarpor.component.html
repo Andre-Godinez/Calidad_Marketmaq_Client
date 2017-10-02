@@ -1,0 +1,98 @@
+<div class="container-new cnt-slider-all">
+  <div class="container-filter">
+    <h3  class="label-buscar">Busca por</h3>
+    <div class="content-select-filter">
+      <div (click)="btnbusca='empresa'" [class.active]="btnbusca==='empresa'" class="select-filter">empresa</div>
+      <div (click)="btnbusca='marca'" [class.active]="btnbusca==='marca'" class="select-filter">marca</div>
+      <div (click)="btnbusca='categoria'" [class.active]="btnbusca==='categoria'" class="select-filter">categorias</div>
+    </div>
+  </div>
+  <div class="container-maqs-fade">
+    <div  [ngClass]="{'step-activo': btnbusca == 'empresa'}"
+          class="container-busca principal">
+      <ul [ngClass]="{'ver-mas': !(btnver=='empresa')}" class="content-lista">
+        <li *ngFor="let empresa of empresasStaticas; let i = index" class="content-marca-item">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{companyId: empresa.id}">
+            <div class="content-item">
+              <div class="content-info">
+                <div class="image-item">
+                  <img [src]="empresa.urlImage" alt="Empresa de maquinaria pesada - {{ empresa.name }}">
+                </div>
+                <div class="title-item">{{ empresa.name }}</div>
+              </div>
+              <div class="content-detail">
+                <div class="title-cantidad">-</div>
+                <div class="btn-ver">ver +</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="btnver==''" class="content-btn-ver-mas company-mobile">
+        <div (click)="btnver='empresa'" class="btn-ver-mas">- Ver mas -</div>
+      </div>
+      <div *ngIf="btnver!=''" class="content-btn-ver-mas company-mobile">
+        <div (click)="btnver=''" class="btn-ver-mas">- Ver menos -</div>
+      </div>
+    </div>
+
+    <div  [ngClass]="{'step-activo': btnbusca == 'marca'}"
+          class="container-busca principal">
+      <ul [ngClass]="{'ver-mas': !(btnver=='marca')}" class="content-lista">
+        <li *ngFor="let marca of listaMarcas" class="content-marca-item">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{brandId: marca.id}">
+            <div class="content-item">
+              <div class="content-info">
+                <div class="image-item">
+                  <img [src]="marca.urlImage" alt="Marca de maquinaria pesada - { marca.name }}">
+                </div>
+                <div class="title-item">{{ marca.name }}</div>
+              </div>
+              <div class="content-detail">
+                <div *ngIf="marca.cant" class="title-cantidad">{{ marca.cant }}
+                    <span>avisos</span>
+                </div>
+                <div class="btn-ver">ver +</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="btnver==''" class="content-btn-ver-mas">
+        <div (click)="btnver='marca'" class="btn-ver-mas">- Ver mas -</div>
+      </div>
+      <div *ngIf="btnver!=''" class="content-btn-ver-mas">
+        <div (click)="btnver=''" class="btn-ver-mas">- Ver menos -</div>
+      </div>
+    </div>
+
+    <div  [ngClass]="{'step-activo': btnbusca == 'categoria'}"
+          class="container-busca principal">
+      <ul [ngClass]="{'ver-mas': !(btnver=='categoria')}" class="content-lista">
+        <li *ngFor="let categoria of listaCategorias; let i = index" class="content-marca-item">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{categoryId: categoria.id}">
+            <div class="content-item">
+              <div class="content-info title-category">
+                <div class="image-item">
+                  <img src="assets/img/aviso_home.png" [alt]="categoria.description">
+                </div>
+                <div class="title-item title-category">{{ categoria.name }}</div>
+              </div>
+              <div class="content-detail">
+                <div class="title-cantidad">-</div>
+                <div class="btn-ver">ver +</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="btnver==''" class="content-btn-ver-mas">
+        <div (click)="btnver='categoria'" class="btn-ver-mas">- Ver mas -</div>
+      </div>
+      <div *ngIf="btnver!=''" class="content-btn-ver-mas">
+        <div (click)="btnver=''" class="btn-ver-mas">- Ver menos -</div>
+      </div>
+    </div>
+  </div>
+
+</div>

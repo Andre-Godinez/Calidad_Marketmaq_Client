@@ -1,0 +1,209 @@
+@import "conf/conf.scss";
+@mixin fontChicobold{
+  font-family: "RobotoRegular", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+@mixin fontChico{
+//   font-family: 'CenturyGothicRegular', sans-serif;
+  font-family: "RobotoRegular", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+@mixin fontMedio{
+//   font-family: 'oldsansblack';
+  font-family: 'FranklinGothicDemiRegular';
+  font-style: normal;
+  font-weight: normal;
+}
+@mixin fontGrande{
+  font-family: 'FranklinGothicDemiRegular';
+  font-style: normal;
+  font-weight: normal;
+}
+$fontdroid:'DroidSerif';
+/* Inicio textos ipe */
+// @mixin ipetbasic{
+// 	font-family: $font;
+// 	color: $primary-text-color;/*negro*/
+// }
+@mixin pefontsizeheight($web,$webline,$tablet,$tabletline,$mobile,$mobileline){
+	@include media(minxs) {
+		font-size: $mobile;
+		line-height: $mobileline;
+	}
+	@include media(maxxs) {
+		font-size: $mobile;
+		line-height: $mobileline;
+	}
+	@include media(sm) {
+		font-size: $tablet;
+		line-height: $tabletline;
+	}
+	@include media(md) {
+		font-size: $web;
+		line-height: $webline;
+	}
+	@include media(lg) {
+		font-size: $web;
+		line-height: $webline;
+	}
+}
+@mixin pefontsize($web,$tablet,$mobile){
+	@include media(minxs) {
+		font-size: $mobile;
+	}
+	@include media(maxxs) {
+		font-size: $mobile;
+	}
+	@include media(sm) {
+		font-size: $tablet;
+	}
+	@include media(md) {
+		font-size: $web;
+	}
+	@include media(lg) {
+		font-size: $web;
+	}
+}
+
+/*********************************************************/
+
+/******************** Inicio leo ********************/
+@mixin leost01{
+	@include fontChico;
+	@include pefontsizeheight(14px,1,14px,1,13px,1);
+}
+@mixin leost02{
+	@include fontChico;
+	@include pefontsizeheight(12px,1,12px,1,12px,1);
+}
+@mixin leost03{
+	@include fontChico;
+	@include pefontsizeheight(20px,1,20px,1,20px,1);
+}
+@mixin leost04{
+	@include fontChico;
+	@include pefontsizeheight(24px,1,24px,1,18px,1);
+}
+@mixin leotx01{
+	@include fontMedio;
+	@include pefontsizeheight(23px,1.3,23px,1.3,14px,1);
+}
+@mixin leotx01scroll{
+	@include fontMedio;
+	@include pefontsizeheight(16px,1.3,16px,1.3,14px,1);
+}
+@mixin leotx02{
+	@include fontMedio;
+	@include pefontsizeheight(35px,1,32px,1,25px,1);
+}
+@mixin leotx02scroll{
+	@include fontMedio;
+	@include pefontsizeheight(30px,1,28px,1,22px,1);
+}
+
+@mixin leotx03rgt{
+	@include fontMedio;
+	@include pefontsizeheight(13px,1.3,13px,1.3,13px,1);
+}
+@mixin leotx03btn{
+	@include fontMedio;
+	@include pefontsizeheight(25px,1.3,25px,1.3,25px,1);
+}
+
+@mixin leott01{
+	@include fontGrande;
+	@include pefontsizeheight(40px,1,35px,1,22px,1);
+}
+
+/******************** Fin leo ********************/
+
+/******************** Inicio Malpica ********************/
+@mixin malpicast01{
+	@include fontChico;
+	@include pefontsizeheight(14px,1,12px,1,12px,1);
+}
+@mixin malpicast02{
+	@include fontChico;
+	@include pefontsizeheight(16px,1,14px,1,12px,1);
+
+}
+@mixin malpicast03{
+	@include fontChico;
+	@include pefontsizeheight(11px,1,14px,1,12px,1);
+
+}
+@mixin malpicatx01{
+	@include fontMedio;
+	@include pefontsizeheight(15px,1,14px,1,11px,1);
+}
+@mixin malpicatx02{
+	@include fontMedio;
+	@include pefontsizeheight(20px,1,14px,1,11px,1);
+}
+@mixin malpicatt02{
+		@include fontGrande;
+	@include pefontsizeheight(14px,1,11px,1,8px,1);
+}
+@mixin malpicatt01{
+	@include fontGrande;
+	@include pefontsizeheight(20px,1,20px,1,18px,1);
+}
+/******************** Fin Malpica ********************/
+
+/******************** Inicio Valentina ********************/
+@mixin valts01{
+	@include fontChico;
+	@include pefontsizeheight(14px,1,14px,1,13px,1);
+}
+
+@mixin valtx01{
+	@include fontMedio;
+	@include pefontsizeheight(20px,25px,15px,25px,18px,1);
+}
+
+@mixin valtx11{
+	@include fontChico;
+	@include pefontsizeheight(20px,20px,15px,1,13px,1);
+}
+
+@mixin valtx02{
+	@include fontChico();
+	@include pefontsizeheight(16px,20px,12px,20px,13px,1);
+}
+
+@mixin valtx22{
+	@include fontChico();
+	@include pefontsizeheight(12px,20px,8px,20px,8px,1);
+}
+
+@mixin valthome{
+	@include fontMedio;
+	@include pefontsizeheight(18px,20px,16px,20px,14px,1);
+}
+
+@mixin valthom{
+	@include fontMedio;
+	@include pefontsizeheight(16px,20px,14px,20px,12px,1);
+}
+
+@mixin valthomaq{
+	@include fontMedio;
+	@include pefontsizeheight(25px,1,23px,1,20px,1);
+}
+
+@mixin valthomaq2{
+	@include fontMedio;
+	@include pefontsizeheight(30px,1,27px,1,24px,1);
+}
+
+@mixin valtoperario{
+	@include fontChico();
+	@include pefontsizeheight(11px,15px,8px,15px,8px,1);
+}
+
+
+/******************** Fin Valentina ********************/
+
+

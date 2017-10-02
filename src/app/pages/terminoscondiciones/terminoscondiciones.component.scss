@@ -1,0 +1,59 @@
+@import "../../theme/theme.scss";
+.eq-container-misdatos{
+    background: #fff;
+    .eq-misdatos-content{
+        @include media(minxs) {
+            padding: 0 20px 0 20px;
+        }
+        @include media(maxxs) {
+            padding: 0 20px 0 20px;
+        }
+        @include media(sm) {
+        }
+        @include media(md) {
+        }
+        @include media(lg) {
+        }
+        .misdatos-block-formulario{
+            .misdatos-block-card{
+                margin: 0 0 30px 0;
+                padding: 20px 10px 30px 10px;
+                background: $fondos;
+                border-radius: 4px;
+                @include card-shadow(2);
+                &.padding-ubicacion{
+                    padding: 40px 10px 30px 10px;
+                }
+                .misdatos-block-title{
+                    padding: 0 0 15px 0;
+                    @include fontChico;
+                    @include pefontsizeheight(22px,1,22px,1,18px,1);
+                    text-align: center;
+                    position: relative;
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        bottom:0px;
+                        left: 0px;
+                        height: 2px;
+                        width: 100%;
+                        background: rgba($divider-color,.5);
+                    }
+                }
+                .misdatos-group-elements{
+                    padding: 15px 30px 0px 30px;
+                    @include fontChico;
+                    @include pefontsizeheight(16px,1.5,16px,1.5,14px,1.5);
+                    color: $secondary-text-color;
+                    text-align: justify;
+                    .negrita{
+                        color: $primary-text-color;
+                    }
+                }
+            }
+        }
+    }
+}
+.naranja{
+    color: $accent-color;
+}

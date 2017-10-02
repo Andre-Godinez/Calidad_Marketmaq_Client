@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+<div class="eq-container-breadcrumb">
+    <div class="eq-breadcrumb container-new">
+        <div [routerLink]="['/cuenta']" class="eq-breadcrumb-atras">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </div>
+        <ul>
+            <li class="item-breadcrumb">
+                <div [routerLink]="['/home']" class="breadcrumb-text">Home</div>
+                <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+            </li>
+            <li class="item-breadcrumb">
+                <div [routerLink]="['/cuenta/misavisos']" class="breadcrumb-text">Mis favoritos</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br>
+
+<div class="container-new container-maqs-fade">
+    <div class="principal container-list-maqs step-activo">
+        <div class="contentcar" *ngFor="let maquina of publicationsF; let i = index" >
+        <div class="eq-slide-card card-maq-new">
+            <div  class="eq-maquina-image">
+                <a [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.publication.id]">
+                  <img [src]="maquina.publication.urlImages[0]" alt="Maquinaria publicada en easymaq">
+                </a>
+                <div class="container-star-maq active-favorite-maq">
+                  <div class="maquina-star complete-favorite opera-star" (click)="deleteFav(maquina.id,i)">
+                      <i class="material-icons rojo">favorite</i>
+                  </div>
+                </div>
+
+                <div class="count-img">
+                <span>{{ maquina.publication.urlImages.length }}</span>
+                <i class="material-icons">camera_alt</i>
+                </div>
+            </div>
+            <div class="right-maq">
+                <div class="eq-maquina-title">
+                     <div class="sub-cat-model">{{ maquina.publication.category.name }}</div>
+                    <div class="maquina-name">
+                     <h5 class="marca-tittle">{{maquina.publication.brand.name}}</h5>
+                     <div class="maquina-marca">{{ maquina.publication.modelo }}</div>
+                    </div>
+                </div>
+                <div class="eq-maquina-info">
+                <div class="maquina-ubicacion">
+                    <div class="maquina-direccion">
+                        {{ convertUbigeo.getDepartamento(maquina.publication.uDepartamento)}} -
+                        {{ convertUbigeo.getProvincia(maquina.publication.uDepartamento, maquina.publication.uProvincia) }} -
+                        {{ convertUbigeo.getDistrito(maquina.publication.uDepartamento, maquina.publication.uProvincia, maquina.publication.uDistrito) }}
+                    </div>
+                </div>
+                <div class="price-points">
+                    <div class="price-maqs">
+                        <a *ngIf="maquina.publication.prMoneda =='soles'" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.publication.id]" class="detalle-precio">S/{{ maquina.publication.prPrecio }}</a>
+                        <a *ngIf="maquina.publication.prMoneda == 'dolares'"  [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.publication.id]" class="detalle-precio">US${{ maquina.publication.prPrecio}}</a>
+                        <a *ngIf="maquina.publication.prConsultar" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.publication.id]" class="detalle-precio">A CONSULTAR</a>
+                    </div>
+                    <!--<div class="content-rating-stars">
+                        <div class="ratingControl">
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 50}" class="ratingControl-stars ratingControl-stars--5" ></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 40}" class="ratingControl-stars ratingControl-stars--4" ></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 30}" class="ratingControl-stars ratingControl-stars--3" ></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 20}" class="ratingControl-stars ratingControl-stars--2" ></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 10}" class="ratingControl-stars ratingControl-stars--1" ></div>
+                            <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.fmaquina.author.rkpublicar)).promedio*10 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+                        </div>
+                    </div>-->
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

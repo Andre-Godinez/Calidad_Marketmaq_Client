@@ -1,0 +1,164 @@
+<app-header></app-header>
+<ul class="menu-steps-mobile">
+  <li [ngClass]="{'step-activo': position == 1}" class="menu-steps_btn"><button class="acti_btn_step"><i class="icon-person-1"></i>Consumidor reclamante</button></li>
+  <li [ngClass]="{'step-activo': position == 2}" class="menu-steps_btn"><button><i class="icon-reclamacion-2"></i>Identificación del bien contratado</button></li>
+  <li [ngClass]="{'step-activo': position == 3}" class="menu-steps_btn"><button><i class="icon-serc-4"></i>Detalle de la reclamación</button></li>
+</ul>
+<div class="eq-container-breadcrumb">
+  <div class="eq-breadcrumb container-new ">
+    <div [routerLink]="['/home']" class="eq-breadcrumb-atras">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <ul>
+      <li class="item-breadcrumb">
+        <div [routerLink]="['/home']" class="breadcrumb-text">Home</div>
+        <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+      </li>
+      <li class="item-breadcrumb">
+        <div [routerLink]="['/libro']" class="breadcrumb-text">Libro de reclamaciones</div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="cnt-reclamaciones">
+  <div class="cnt-steps-reclamaciones">
+    <!--navicon-->
+    <h4 class="tittle-step-reclamaciones">Libro de reclamaciones</h4>
+    <h6 class="sub-tittle-step">Información del consumidor reclamante</h6>
+    <div [ngClass]="{'step-activo': position == 1}" class="first-step stepsjs">
+      <div class="cnt_input_reclamaciones">
+        <div class="list_input">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Nombres" [(ngModel)]="nombre" name="nombre" required>
+          </md-input-container>
+        </div>
+        <div class="list_input list_apellidos">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Apellidos" [(ngModel)]="apellido" name="apellido" required>
+          </md-input-container>
+        </div>
+        <div class="list_input mt_select">
+          <md-select [(ngModel)]="selectTipo" name="selectTipo">
+            <md-option *ngFor="let tipodoc of tipodocumento" [value]="tipodoc">
+              {{tipodoc}}
+            </md-option>
+          </md-select>
+        </div>
+        <div class="list_input mt_input" *ngIf="selectTipo == 'DNI'">
+          <md-input-container>
+            <input mdInput placeholder="Nro. de doc" name="documento">
+          </md-input-container>
+        </div>
+        <div class="list_input mt_input" *ngIf="selectTipo == 'RUC'">
+          <md-input-container>
+            <input mdInput placeholder="Nro. de doc" name="documento">
+          </md-input-container>
+        </div>
+        <div class="list_input list_correo">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Correo electronico" name="email" [(ngModel)]="email" required>
+          </md-input-container>
+        </div>
+        <div class="list_input">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Telefono" [(ngModel)]="telefono" name="telefono" required>
+          </md-input-container>
+        </div>
+        <div class="list_input">
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Celular" [(ngModel)]="celular" name="celular" required>
+          </md-input-container>
+        </div>
+      </div>
+    </div>
+    <form #servi="ngForm">
+      <div [ngClass]="{'step-activo': position == 2}" class="second-step stepsjs">
+        <h6 class="sub-tittle-step">Identificación del bien contratado</h6>
+        <div class="cnt_input_reclamaciones">
+          <div class="list_input">
+            <label for="" class="mt_select_label">Servicio<span>*</span></label>
+            <md-select [(ngModel)]="selectServ" name="selectServ">
+              <md-option *ngFor="let servicio of tipo_serv" [value]="servicio">
+                {{servicio}}
+              </md-option>
+            </md-select>
+          </div>
+          <div class="list_input">
+            <label for="" class="mt_select_label">Categoría maquinaria<span>*</span></label>
+            <md-select  [(ngModel)]="selectCategoria" name="selectCategoria">
+              <md-option *ngFor="let categoria of listaCategoria" [value]="categoria.name">
+                {{categoria.name}}
+              </md-option>
+            </md-select>
+          </div>
+          <!--<div class="list_input list_subcat">
+                        <label for="" class="mt_select_label">Sub-Categoria<span>*</span></label>
+                        <md-select [(ngModel)]="selectSubCategoria" name="selectSubCategoria" >
+                            <md-option *ngFor="let subCatgoria of listaSubCategoria " [value]="subCatgoria.subcategoria">
+                                {{ subCatgoria.nombre }}
+                            </md-option>
+                        </md-select>
+                    </div>-->
+          <div class="list_input list_mont">
+            <md-input-container class="bloq-mont">
+              <input mdInput placeholder="Monto reclamado" [(ngModel)]="monto" name="monto" required>
+            </md-input-container>
+            <md-radio-group required class="bloq-mont" [(ngModel)]="tipmoneda" name="tipmoneda">
+              <md-radio-button value="US$"><span class="type-person_leftspan">US$</span></md-radio-button>
+              <md-radio-button value="S/"><span>S/</span></md-radio-button>
+            </md-radio-group>
+          </div>
+          <div class="list_input list_text_desripcion">
+            <!--<md-input-container>
+                            <textarea mdInput #descripcionCode maxlength="500" placeholder="Descripcion"  name="descripcion" [(ngModel)]="descripcion" required></textarea>
+                            <md-hint align="end">{{descripcion.value.length}} / 500</md-hint>
+                        </md-input-container>   -->
+            <md-input-container>
+              <textarea mdInput #descripcionCode maxlength="500" placeholder="Descripcion" name="descripcion" [(ngModel)]="descripcion"
+                required></textarea>
+              <!-- <md-hint align="end">{{descripcionCode.value.length}} / 500</md-hint> -->
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="{'step-activo': position == 3}" class="last-step stepsjs">
+        <div class="cnt_input_reclamaciones">
+          <h6 class="sub-tittle-step">Detalle de la reclamación</h6>
+          <div class="select-type-reclamos">
+            <md-radio-group name="detallereclamo" [(ngModel)]="detallereclamo" required>
+              <md-radio-button value="Reclamo" class="rec_btm"><span class="type-person_leftspan">Reclamo</span> <span class="type-person_span">(Disconformidad relacionada a los productos y/o servicios)</span></md-radio-button>
+              <md-radio-button value="Queja"><span class="type-person_leftspan">Queja</span><span class="type-person_span">(Disconformidad no relacionada a los productos y/o servicios o malestar o descontento a la atención a la atención al público)</span></md-radio-button>
+            </md-radio-group>
+          </div>
+          <div class="list_input detail_area detail_area_mbt">
+            <md-input-container>
+              <textarea mdInput #detalleCode maxlength="500" placeholder="Detalle" name="detalle" [(ngModel)]="detalle" required></textarea>
+              <!-- <md-hint align="end">{{detalleCode.value.length}} / 500</md-hint> -->
+            </md-input-container>
+          </div>
+          <div class="list_input detail_area">
+            <md-input-container>
+              <textarea mdInput #pedidoCode maxlength="500" placeholder="Pedido" name="pedido" [(ngModel)]="pedido" required></textarea>
+              <!-- <md-hint align="end">{{pedidoCode.value.length}} / 500</md-hint> -->
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+    </form>
+
+     <button class="send-reclam" (click)="submit()">enviar</button>
+
+  </div>
+</div>
+<div class="cnt-btns-step">
+  <!-- <div (click)="aftercontrol()" class="before-btn"><i class="icon-cancel-form"></i></div> -->
+  <div class="before-btn"><i class="icon-cancel-form"></i></div>
+  <!-- <div (click)="control(servi)" class="after-btn"><i class="icon-next-form"></i></div> -->
+  <div class="after-btn"><i class="icon-next-form"></i></div>
+</div>
+
+<!-- <button (click)="datos()">Datos</button> -->
+
+<app-footer></app-footer>
+<app-easymodal [dataconfig]="misdatosdataconfig" (pasaBtnmodal)="showBtnmodal($event)"></app-easymodal>
+<!-- <app-easymodal [dataconfig]="misdatosdataconfig"></app-easymodal> -->

@@ -1,0 +1,133 @@
+@import "../../theme/theme.scss";
+section.container-origin{
+    background: $accent-color;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include media(minxs) {
+    }
+    @include media(maxxs) {
+    }
+    @include media(sm) {
+        justify-content: center;
+    }
+    @include media(md) {
+        justify-content: center;
+    }
+    @include media(lg) {
+        justify-content: center;
+    }
+    .title-h1{
+        opacity: 0;
+        margin: 0;
+    }
+    .content-logo-origin{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        .logo-origin{
+            max-width: 80%;
+            max-height: 72px;
+        }
+    }
+    .content-country{
+        .lista-country{
+            display: flex;
+            justify-content: flex-start;
+            // justify-content: center;
+            text-align: center;
+            align-items: center;
+            flex-wrap: wrap;
+            .item-county{
+                margin: 0;
+                padding: 0;
+                padding: 0 5px;
+                height: 60px;
+                filter:  grayscale(1);
+                @include media(minxs) {
+                    width: 50%;
+                    background-color: rgba(255, 255, 255, .5);
+                    border: 1px solid $accent-color;
+                }
+                @include media(maxxs) {
+                    width: 50%;
+                    background-color: rgba(255, 255, 255, .5);
+                    border: 1px solid $accent-color;
+                }
+                @include media(sm) {
+                }
+                @include media(md) {
+                }
+                @include media(lg) {
+                }
+                &.enable{
+                    filter:  grayscale(0);
+                    a{
+                        cursor: pointer;
+                    }
+                }
+                &.active{}
+                &:hover{
+                    background: rgba(255, 255, 255, .75);
+                    a{
+                        span{
+                            color: $light-primary-text;
+                        }
+                    }
+                }
+                a{
+                    display: flex;
+                    justify-content: center;
+                    text-align: left;
+                    align-items: center;
+                    height: 100%;
+                    width: 100%;
+                    cursor: default;
+                    img{
+                        @include media(minxs) {
+                            height: 25px;
+                        }
+                        @include media(maxxs) {
+                            height: 25px;
+                        }
+                        @include media(sm) {
+                            height: 30px;
+                            box-shadow: 1px 1px 6px 0px rgba(0,0,0,.5);
+                        }
+                        @include media(md) {
+                            height: 30px;
+                            box-shadow: 1px 1px 6px 0px rgba(0,0,0,.5);
+                        }
+                        @include media(lg) {
+                            height: 30px;
+                            box-shadow: 1px 1px 6px 0px rgba(0,0,0,.5);
+                        }
+                    }
+                    span{
+                        padding: 0 0 0 5px;
+                        color: rgba(255, 255, 255, 0.8);
+                        min-width: 84px;
+                        @include fontChico;
+                        font-size: 14px;
+                        @include media(minxs) {
+                            color: $primary-text-color;
+                        }
+                        @include media(maxxs) {
+                            color: $primary-text-color;
+                        }
+                        @include media(sm) {
+                        }
+                        @include media(md) {
+                        }
+                        @include media(lg) {
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,899 @@
+@import "../../../theme/theme.scss";
+
+.eq-content-slider{
+    position: relative;
+    min-height: 100vh;
+    // display: flex;
+    // align-items:center;
+    overflow: hidden;
+    // justify-content: center;
+    &:before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 3;
+        background: $accent-color;
+        height: 3px;
+        width: 100%;
+        left: 0;
+    }
+    .myslides{
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        .swiper-slide {
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(center);
+            text-align: center;
+            @include align-items(center);
+            width: 100%;
+        }
+        // &:after{
+        //     content: '';
+        //     position: absolute;
+        //     left: 0;
+        //     width: 100%;
+        //     background: $accent-color;
+        //     z-index: 100;
+        //     @include media(minxs) {
+        //         bottom: 0;
+        //         height: 3px;
+        //     }
+        //     @include media(maxxs) {
+        //         bottom: -1px;
+        //         height: 4px;
+        //     }
+        //     @include media(sm) {
+        //         bottom: 1px;
+        //         height: 4px;
+        //     }
+        //     @include media(md) {
+        //         bottom: 0;
+        //         height: 5px;
+        //     }
+        //     @include media(lg) {
+        //         bottom: -1px;
+        //         height: 6px;
+        //     }
+        // }
+        .carouselcard-next{
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            z-index: 50;
+            width:50px;
+            height:50px;
+            background-color:rgba(96,125,139,.85);
+            transition:all 0.25s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor:pointer;
+            i{
+                font-size: 40px;
+                color:#fff;
+            }
+            @include media(minxs) {
+                display: none;
+            }
+            @include media(maxxs) {
+                display: none;
+            }
+            @include media(sm) {
+            }
+            @include media(md) {
+            }
+            @include media(lg) {
+            }
+            &:hover{
+                background-color: #fff;
+                i{
+                    color:$accent-color;
+                }
+            }
+        }
+        .slick-dotted.slick-slider{
+            margin-bottom: 0;
+        }
+    }
+
+    .eq-container-buscador{
+        position: absolute;
+        bottom: 12vh;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 100;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(center);
+        text-align: center;
+        @include align-items(center);
+        @include media(minxs) {
+            display: none;
+            z-index: -100;
+        }
+        @include media(maxxs) {
+            display: none;
+            z-index: -100;
+        }
+        @include media(sm) {
+        }
+        @include media(md) {
+        }
+        @include media(lg) {
+        }
+        .eq-content-buscador{
+            @include media(tb){
+                width: 100%;
+                max-width: 650px;
+            }
+            position: relative;
+            @include flexbox();
+            @include flex-direction(column);
+            .eq-content-buscador-header{
+                background: rgba($primary-color-dark ,.7);
+                border-radius: 6px 6px 0 0;
+                .eq-pestanas{
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include flex(1, 1, 100%);
+                    position: relative;
+                    .item-pestana{
+                        padding: 5px 20px;
+                        color: $primary-color-text;
+                        position: relative;
+                        @include valthom;
+                        text-shadow: 2px 2px 4px #212121;
+                        cursor: pointer;
+                        &.active{
+                            @include valthome;
+                            background: rgba($primary-color,.95);
+                        }
+                    }
+
+                }
+            }
+            .eq-content-buscador-body{
+                position: relative;
+                background: rgba($primary-color,1);
+                padding: 15px 20px;
+                border-radius: 0 0 6px 6px;
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(space-between);
+                text-align: center;
+                @include align-items(center);
+                @include flex-wrap(wrap);
+                // @include flex(1, 1, 0);
+                .eq-buscador-operacion{
+                    padding: 0 11px 0 11px;
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                    .content-select-operacion{
+                        position: relative;
+                        .select-header-operacion{
+                            background: $accent-color;
+                            border-radius: 2px;
+                            height: 30px;
+                            width: 130px;
+                            cursor: pointer;
+                            @include flexbox();
+                            @include flex-direction(row);
+                            // @include justify-content(center);
+                            // text-align: center;
+                            @include align-items(center);
+                            // @include flex-wrap(wrap);
+                            // @include flex(1, 1, 0);
+                            .select-title{
+                                @include flex(1, 1, 0);
+                                color: $primary-color-text;
+                                text-transform: uppercase;
+                                @include leotx01scroll;
+                            }
+                            .select-flecha{
+                                width: 20px;
+                                img{
+                                    width: 9px;
+                                }
+                            }
+                        }
+                        .select-body-operacion{
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            background: #ffffff;
+                            border: 1px solid rgba($divider-color,.5);;
+                            z-index: 10;
+                            &.active{
+                                display: inline;
+                            }
+                            ul{
+                                margin: 0;
+                                padding: 0;
+                                .item-select{
+                                    width: 100%;
+                                    height: 36px;
+                                    border-top: 1px solid rgba($divider-color,.5);;
+                                    list-style:none;
+                                    text-transform: capitalize;
+                                    text-align: left;
+                                    padding: 0 5px 0 10px;
+                                    color: $secondary-text-color;
+                                    cursor: pointer;
+                                    @include leost01;
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    // @include justify-content(center);
+                                    // text-align: center;
+                                    @include align-items(center);
+                                    // @include flex-wrap(wrap);
+                                    // @include flex(1, 1, 0);
+                                    &:hover{
+                                        background: $accent-color;
+                                        color: $primary-color-text;
+                                    }
+                                    &.item-first{
+                                        border-top: 0px solid rgba($divider-color,.5);
+                                        padding: 0 0 0 0;
+                                        position: relative;
+                                        cursor: default;
+                                        @include flexbox();
+                                        @include flex-direction(row);
+                                        // @include justify-content(center);
+                                        // text-align: center;
+                                        @include align-items(center);
+                                        // @include flex-wrap(wrap);
+                                        // @include flex(1, 1, 0);
+                                        &:hover{
+                                            background: #ffffff;;
+                                            color: $secondary-text-color;
+                                        }
+                                        &:before{
+                                            content: '';
+                                            position: absolute;
+                                            top: 9px;
+                                            right: 22px;
+                                            height: 20px;
+                                            width: 1px;
+                                            background: rgba($divider-color,.5);
+                                        }
+                                        .select-title{
+                                            @include flex(1, 1, 0);
+                                            text-align: center;
+                                        }
+                                        .select-flecha{
+                                            width: 20px;
+                                            position: relative;
+                                            text-align: center;
+                                            cursor: pointer;
+                                            img{
+                                                width: 9px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .eq-buscador-categoria{
+                    padding: 0 11px 0 11px;
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                    .content-select-categoria{
+                        position: relative;
+                        .select-header-categoria{
+                            height: 45px;
+                            background: #ffffff;
+                            cursor: pointer;
+                            max-width: 248px;
+                            min-width: 175px;
+                            width: 238px;
+                            @include flexbox();
+                            @include flex-direction(row);
+                            // @include justify-content(center);
+                            // text-align: center;
+                            @include align-items(center);
+                            // @include flex-wrap(wrap);
+                            // @include flex(1, 1, 0);
+                            @include media(minxs) {
+                            }
+                            @include media(maxxs) {
+                            }
+                            @include media(sm) {
+                                width: 220px;
+                            }
+                            @include media(md) {
+                                width: 238px;
+                            }
+                            @include media(lg) {
+                                width: 238px;
+                            }
+                            .select-icon{
+                                width: 60px;
+                                padding: 2px 0 0 0;
+                                img{
+                                    width: 46px;
+                                }
+                            }
+                            .select-title{
+                                @include flex(1, 1, 0);
+                                @include leotx01scroll;
+                                color: $light-secundary-text;
+                            }
+                            .select-flecha{
+                                width: 20px;
+                                margin-left: auto;
+                                img{
+                                    width: 9px;
+                                }
+                            }
+                        }
+                        .select-body-categoria{
+                            display: none;
+                            position: absolute;
+                            top: 45px;
+                            left: 0;
+                            min-width: 100%;
+                            background: #ffffff;
+                            border: 1px solid rgba($divider-color,.5);;
+                            z-index: 10;
+                            &.active{
+                                display: inline;
+                            }
+                            ul{
+                                margin: 0;
+                                padding: 0;
+                                max-height: 225px;
+                                overflow-y:auto;
+                                .item-select{
+                                    min-width: 100%;
+                                    height: 45px;
+                                    border-top: 1px solid rgba($divider-color,.5);;
+                                    list-style:none;
+                                    text-align: left;
+                                    padding: 0 5px 0 10px;
+                                    color: $secondary-text-color;
+                                    cursor: pointer;
+                                    @include leost01;
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    // @include justify-content(center);
+                                    // text-align: center;
+                                    @include align-items(center);
+                                    // @include flex-wrap(wrap);
+                                    // @include flex(1, 1, 0);
+                                    &:hover{
+                                        background: $accent-color;
+                                        color: $primary-color-text;
+                                        .select-icon-gris{
+                                            display: none;
+                                            img{
+                                            }
+                                        }
+                                        .select-icon-blanco{
+                                            display: inline;
+                                            img{
+                                            }
+                                        }
+                                        .select-title{
+                                            color: $primary-color-text;
+                                        }
+                                    }
+                                    .select-icon-gris{
+                                        width: 60px;
+                                        padding: 0 0 0 0;
+                                        img{
+                                            width: 43px;
+                                        }
+                                    }
+                                    .select-icon-blanco{
+                                        display: none;
+                                        width: 60px;
+                                        padding: 0 0 0 0;
+                                        img{
+                                            width: 43px;
+                                        }
+                                    }
+                                    .select-title{
+                                        @include flex(1, 1, 0);
+                                        @include leost02;
+                                        color: $light-secundary-text;
+                                    }
+                                    &.item-first{
+                                        border-top: 0px solid rgba($divider-color,.5);
+                                        padding: 0 0 0 0;
+                                        position: relative;
+                                        cursor: default;
+                                        @include flexbox();
+                                        @include flex-direction(row);
+                                        // @include justify-content(center);
+                                        // text-align: center;
+                                        @include align-items(center);
+                                        // @include flex-wrap(wrap);
+                                        // @include flex(1, 1, 0);
+                                        &:hover{
+                                            background: #ffffff;;
+                                            color: $secondary-text-color;
+                                            .select-title{
+                                                color: $light-secundary-text;
+                                            }
+                                        }
+                                        &:before{
+                                            content: '';
+                                            position: absolute;
+                                            top: 9px;
+                                            right: 22px;
+                                            height: 20px;
+                                            width: 1px;
+                                            background: rgba($divider-color,.5);
+                                        }
+                                        .select-title{
+                                            @include flex(1, 1, 0);
+                                            text-align: center;
+                                        }
+                                        .select-flecha{
+                                            width: 20px;
+                                            position: relative;
+                                            text-align: center;
+                                            cursor: pointer;
+                                            img{
+                                                width: 9px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .eq-buscador-input{
+                    padding: 0 11px 0 11px;
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    .content-buscar{
+                        height: 45px;
+                        input{
+                            @include leotx01scroll;
+                            color: $light-secundary-text;
+                            width: 160px;
+                            height: 30px;
+                            border: 0;
+                            &:focus{
+                                outline:0px;
+                            }
+                            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                                color: #fff;
+                            }
+                            &::-moz-placeholder { /* Firefox 19+ */
+                                color: #fff;
+                            }
+                            &:-ms-input-placeholder { /* IE 10+ */
+                                color: #fff;
+                            }
+                            &:-moz-placeholder { /* Firefox 18- */
+                                color: #fff;
+                            }
+                        }
+                        .web-placeholder{
+                            display: none;
+                        }
+                        i{
+                            display: none;
+                        }
+                    }
+                    @include media(tb){
+                        width: 100%;
+                        padding: 0;
+                        .content-buscar{
+                            position: relative;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding:0;
+                            background:$primary-color;
+                            input{
+                                width: 100%;
+                                background:rgba(255, 255, 255, 0.3);
+                                height: 100%;
+                                color:#fff;
+                                padding-left: 50px;
+                            }
+                            i{
+                                display: block;
+                                position: absolute;
+                                left: 15px;
+                                color:#fff;
+                            }
+                        }
+                    }
+                }
+                .eq-buscador-lupa{
+                    padding: 0 11px 0 11px;
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                    .btn-buscador{
+                        background: $accent-color;
+                        border-radius: 2px;
+                        height: 30px;
+                        width: 110px;
+                        cursor: pointer;
+                        @include flexbox();
+                        @include transitiondefault(100ms);
+                        @include flex-direction(row);
+                        // @include justify-content(center);
+                        // text-align: center;
+                        @include align-items(center);
+                        // @include flex-wrap(wrap);
+                        // @include flex(1, 1, 0);
+                        &:active{
+                            @include card-shadow(2);
+                        }
+                        .btn-title{
+                            @include flex(1, 1, 0);
+                            color: $primary-color-text;
+                            text-transform: uppercase;
+                            text-align: end;
+                            @include leotx01scroll;
+                        }
+                        .btn-flecha{
+                            width: 32px;
+                            padding: 4px 0 0 0;
+                            i{
+                                width: 28px;
+                                font-size: 28px;
+                                color: $light-icon-active ;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    @include media(tbland){
+        justify-content: flex-start;
+    }
+}
+    .eq-container-letrero{
+        max-width: 80%;
+        margin:0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        @include media(tb){
+            max-width: 400px;
+
+        }
+        @media(min-width:864px){
+            margin: 0;
+        }
+
+        .eq-content-letrero{
+            @include media(sm) {
+                background: rgba($primary-color,.85);
+                @include prefixer(transform, skew(-22deg, 0));
+                @include prefixer(transform-origin, 0 0);
+            }
+            @include media(md) {
+                background: rgba($primary-color,.85);
+                @include prefixer(transform, skew(-22deg, 0));
+                @include prefixer(transform-origin, 0 0);
+            }
+            @include media(lg) {
+                background: rgba($primary-color,.85);
+                @include prefixer(transform, skew(-22deg, 0));
+                @include prefixer(transform-origin, 0 0);
+            }
+            .eq-letrero-capa{
+                position: relative;
+                @include media(minxs) {
+                }
+                @include media(maxxs) {
+                }
+                @include media(sm) {
+                    padding: 20px 30px 30px 0;
+                    @include prefixer(transform, skew(22deg, 0));
+                    @include prefixer(transform-origin, 0 0);
+                }
+                @include media(md) {
+                    padding: 20px 30px 30px 0;
+                    @include prefixer(transform, skew(22deg, 0));
+                    @include prefixer(transform-origin, 0 0);
+                }
+                @include media(lg) {
+                    padding: 20px 30px 30px 0;
+                    @include prefixer(transform, skew(22deg, 0));
+                    @include prefixer(transform-origin, 0 0);
+                }
+                .letrero-subcategoria{
+                    @include fontMedio;
+                    @include pefontsizeheight(30px,1,28px,1,26px,1);
+                    @include ajustacontrespuntos;
+                    color: $primary-color-text;
+                    @include media(minxs) {
+                        text-align: center;
+                        padding: 0 0 5px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(maxxs) {
+                        text-align: center;
+                        padding: 0 0 5px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(sm) {
+                        text-align: left;
+                        padding: 0 0 5px 30px;
+                    }
+                    @include media(md) {
+                        text-align: left;
+                        padding: 0 0 5px 30px;
+                    }
+                    @include media(lg) {
+                        text-align: left;
+                        padding: 0 0 5px 30px;
+                    }
+                }
+                .letrero-marca-modelo{
+                    text-align: left;
+                    @include fontMedio;
+                    @include pefontsizeheight(30px,1,28px,1,26px,1);
+                    @include ajustacontrespuntos;
+                    color: $primary-color-text;
+                    @include media(minxs) {
+                        text-align: center;
+                        padding: 0 0 16px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(maxxs) {
+                        text-align: center;
+                        padding: 0 0 16px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(sm) {
+                        text-align: left;
+                        padding: 0 30px 5px 30px;
+                    }
+                    @include media(md) {
+                        text-align: left;
+                        padding: 0 30px 5px 30px;
+                    }
+                    @include media(lg) {
+                        text-align: left;
+                        padding: 0 30px 5px 30px;
+                    }
+                }
+                .letrero-direccion{
+                    @include fontChico;
+                    @include pefontsizeheight(16px,1.3,16px,1.3,16px,1);
+                    @include ajustatexto;
+                    color: $primary-color-text;
+                    @include media(minxs) {
+                        text-align: center;
+                        padding: 0 0 5px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(maxxs) {
+                        text-align: center;
+                        padding: 0 0 5px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(sm) {
+                        text-align: left;
+                        padding: 0 50px 5px 30px;
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
+                    @include media(md) {
+                        text-align: left;
+                        padding: 0 50px 5px 30px;
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
+                    @include media(lg) {
+                        text-align: left;
+                        padding: 0 50px 5px 30px;
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
+                }
+                .letrero-distrito{
+                    text-align: left;
+                    @include fontChico;
+                    @include pefontsizeheight(16px,1.3,16px,1.3,16px,1);
+                    @include ajustacontrespuntos;
+                    color: $primary-color-text;
+                    @include media(minxs) {
+                        text-align: center;
+                        padding: 0 0 16px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(maxxs) {
+                        text-align: center;
+                        padding: 0 0 16px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(sm) {
+                        text-align: left;
+                        padding: 0 60px 5px 30px;
+                    }
+                    @include media(md) {
+                        text-align: left;
+                        padding: 0 60px 5px 30px;
+                    }
+                    @include media(lg) {
+                        text-align: left;
+                        padding: 0 60px 5px 30px;
+                    }
+                }
+                .letrero-telefono{
+                    text-align: left;
+                    @include fontMedio;
+                    @include pefontsizeheight(30px,1,30px,1,30px,1);
+                    @include ajustacontrespuntos;
+                    color: $primary-color-text;
+                    @include media(minxs) {
+                        text-align: center;
+                        padding: 0 0 20px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(maxxs) {
+                        text-align: center;
+                        padding: 0 0 20px 0;
+                        @include prefixer(text-shadow, 1px 1px 4px #000);
+                    }
+                    @include media(sm) {
+                        text-align: left;
+                        padding: 0 80px 10px 30px;
+                    }
+                    @include media(md) {
+                        text-align: left;
+                        padding: 0 80px 10px 30px;
+                    }
+                    @include media(lg) {
+                        text-align: left;
+                        padding: 0 80px 10px 30px;
+                    }
+                }
+                .letrero-logo{
+                    @include media(minxs) {
+                        display: none;
+                    }
+                    @include media(maxxs) {
+                        display: none;
+                    }
+                    @include media(sm) {
+                        text-align: center;
+                        padding: 0 80px 0 0;
+                    }
+                    @include media(md) {
+                        text-align: center;
+                        padding: 0 80px 0 0;
+                    }
+                    @include media(lg) {
+                        text-align: center;
+                        padding: 0 80px 0 0;
+                    }
+                    img{
+                        height: 35px;
+                    }
+                }
+                .letrero-content-operacion{
+                    @include flexbox();
+                    @include flex-direction(row);
+                    @include justify-content(center);
+                    text-align: center;
+                    @include align-items(center);
+                    // @include flex-wrap(wrap);
+                    // @include flex(1, 1, 0);
+                    @include media(minxs) {
+                    }
+                    @include media(maxxs) {
+                    }
+                    @include media(sm) {
+                        position: absolute;
+                        bottom: -45px;
+                        left: 0;
+                        background: $accent-color;
+                        height: 65px;
+                        width: 280px;
+                        @include prefixer(transform, skew(-22deg, 0));
+                        @include prefixer(transform-origin, 0 0);
+                    }
+                    @include media(md) {
+                        position: absolute;
+                        bottom: -45px;
+                        left: 0;
+                        background: $accent-color;
+                        height: 65px;
+                        width: 280px;
+                        @include prefixer(transform, skew(-22deg, 0));
+                        @include prefixer(transform-origin, 0 0);
+                    }
+                    @include media(lg) {
+                        position: absolute;
+                        bottom: -45px;
+                        left: 0;
+                        background: $accent-color;
+                        height: 65px;
+                        width: 280px;
+                        @include prefixer(transform, skew(-22deg, 0));
+                        @include prefixer(transform-origin, 0 0);
+                    }
+                    .letrero-capa-operacion{
+                        @include fontMedio;
+                        @include pefontsizeheight(30px,1,40px,1,30px,1);
+                        @include ajustacontrespuntos;
+                        text-transform: uppercase;
+                        @include media(minxs) {
+                            color: $accent-color;
+                            @include prefixer(text-shadow, 1px 1px 4px #000);
+                        }
+                        @include media(maxxs) {
+                            color: $accent-color;
+                            @include prefixer(text-shadow, 1px 1px 4px #000);
+                        }
+                        @include media(sm) {
+                            color: $primary-color-text;
+                            @include prefixer(transform, skew(22deg, 0));
+                            @include prefixer(transform-origin, 0 0);
+                        }
+                        @include media(md) {
+                            color: $primary-color-text;
+                            @include prefixer(transform, skew(22deg, 0));
+                            @include prefixer(transform-origin, 0 0);
+                        }
+                        @include media(lg) {
+                            color: $primary-color-text;
+                            @include prefixer(transform, skew(22deg, 0));
+                            @include prefixer(transform-origin, 0 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+.banner-home_image{
+    min-height: 100vh;
+    .eq-content-slider{
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+.slider-home-cnt{
+    min-height: 100vh;
+    margin-top: -45px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    @include media(tb){
+        align-items: center;
+        margin-top: -80px;
+    }
+    @include media(tbland){
+        justify-content: flex-start;
+
+    }
+}

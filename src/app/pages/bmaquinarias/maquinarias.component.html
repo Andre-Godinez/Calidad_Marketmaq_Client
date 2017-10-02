@@ -1,0 +1,635 @@
+<app-header></app-header>
+
+<div class="eq-buscador">
+  <div class="eq-container-breadcrumb">
+    <div class="eq-breadcrumb container-new">
+      <div [routerLink]="['/home']" class="eq-breadcrumb-atras">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </div>
+      <ul>
+        <li class="item-breadcrumb">
+          <div [routerLink]="['/home']" class="breadcrumb-text">Home</div>
+          <div class="breadcrumb-icon"><i class="material-icons">keyboard_arrow_right</i></div>
+        </li>
+        <li class="item-breadcrumb">
+          <div class="breadcrumb-text">Maquinarias</div>
+        </li>
+      </ul>
+      <div class="btn-filter" (click)="resFilter()"><i class="fa fa-filter" aria-hidden="true"></i></div>
+      <div class="btn-div">|</div>
+      <div class="btnsearch" (click)="eqFondo=true; hola=true"><i class="fa fa-search" aria-hidden="true"></i></div>
+      <div class="search-cont">
+        <div>
+          <input type="text" name="webbuscar" placeholder="Buscar categoria, marca o empresa" #search>
+        </div>
+        <div class="btn-search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="resp-search" [ngClass]="{'active':hola}">
+  <div class="inp-search">
+    <input type="text" (keyup.enter)="eqFondo=false" name="webbuscar1" placeholder="Buscar categoria, marca o empresa"
+      #search1>
+  </div>
+  <!-- <div class="resp-btn-search">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </div> -->
+  <div class="resp-btn-close" (click)="eqFondo=false; hola=false">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </div>
+</div>
+
+
+<!-- PRUEBAS -->
+
+<!-- <div class="empresas" *ngIf="filters.length > 0">
+  <h1>FILTROS</h1>
+  <ul>
+    <li *ngFor="let filtro of filters;index as i" (click)="delete(filtro,i)">
+      {{filtro.name}}
+    </li>
+  </ul>
+</div> -->
+
+<!-- <div class="empresas" *ngIf="!companyId">
+  <h1>EMPRESAS</h1>
+  <ul>
+    <li *ngFor="let company of companies" (click)="filter('company',company)">
+      {{company.name}}
+    </li>
+  </ul>
+</div> -->
+<div class="container-fil">
+  <div class="caja" [ngClass]="{'active': menu_filter}">
+    <div class="filtros">
+      <div class="filtro-container">
+        <div class="filtro-title">TUS FILTROS
+        </div>
+        <div class="filtro-content">
+          <ul style="display:flex; flex-wrap:wrap">
+            <li class="filtros-li" *ngFor="let filtro of filters;index as i" (click)="delete(filtro,i)">{{filtro.name}} <i class="fa fa-times" aria-hidden="true"></i></li>
+          </ul>
+        </div>
+      </div>
+      <div class="filtro-container" *ngIf="!companyId">
+        <div class="filtro-title" (click)="FilEmpresas()">EMPRESAS
+          <i class="fa fa-chevron-circle-down" aria-hidden="true" *ngIf="filempresas"></i>
+          <i class="fa fa-chevron-circle-up" aria-hidden="true" *ngIf="!filempresas"></i>
+        </div>
+        <div class="filtro-content" [ngClass]="{'close':!filempresas}">
+          <ul>
+            <li *ngFor="let company of companies" (click)="filter('company',company)">{{company.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filtro-container" *ngIf="!brandId">
+        <div class="filtro-title" (click)="FilMarcas()">MARCAS
+          <i class="fa fa-chevron-circle-down" aria-hidden="true" *ngIf="filmarcas"></i>
+          <i class="fa fa-chevron-circle-up" aria-hidden="true" *ngIf="!filmarcas"></i>
+        </div>
+        <div class="filtro-content" [ngClass]="{'close':!filmarcas}">
+          <ul>
+            <li *ngFor="let brand of brands" (click)="filter('brand',brand)">{{brand.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filtro-container" *ngIf="!categoryId">
+        <div class="filtro-title" (click)="FilCatergorias()">CATEGORIAS
+          <i class="fa fa-chevron-circle-down" aria-hidden="true" *ngIf="filcategorias"></i>
+          <i class="fa fa-chevron-circle-up" aria-hidden="true" *ngIf="!filcategorias"></i>
+        </div>
+        <div class="filtro-content" [ngClass]="{'close':!filcategorias}">
+          <ul>
+            <li *ngFor="let category of categories" (click)="filter('category',category)">{{category.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filtro-container" *ngIf="!type">
+        <div class="filtro-title" (click)="FilTipos()">TIPO
+          <i class="fa fa-chevron-circle-down" aria-hidden="true" *ngIf="filtipos"></i>
+          <i class="fa fa-chevron-circle-up" aria-hidden="true" *ngIf="!filtipos"></i>
+        </div>
+        <div class="filtro-content" [ngClass]="{'close':!filtipos}">
+          <ul>
+            <li *ngFor="let tipo of tipos" (click)="filter('tipo',tipo)">{{tipo}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filtro-container" *ngIf="!condition">
+        <div class="filtro-title" (click)="FilCondiciones()">CONDICION
+          <i class="fa fa-chevron-circle-down" aria-hidden="true" *ngIf="filcondicion"></i>
+          <i class="fa fa-chevron-circle-up" aria-hidden="true" *ngIf="!filcondicion"></i>
+        </div>
+        <div class="filtro-content" [ngClass]="{'close':!filcondicion}">
+          <ul>
+            <li *ngFor="let condicion of condiciones" (click)="filter('condicion',condicion)">{{condicion}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container-new p-cont container-maqs-fade">
+      <!-- <div class="principal container-all-maqs container-new_smq" [ngClass]="{'step-activo': viewGallery == 'galery'}"> -->
+      <div class="principal container-all-maqs container-new_smq step-activo">
+
+        <card-maquina-component *ngFor="let maquina of publications | paginate: { itemsPerPage: 12, currentPage: p } ; let i = index" [maquina]="maquina" ></card-maquina-component>
+        <!-- <div class="contentcar" *ngFor="let maquina of publications | paginate: { itemsPerPage: 12, currentPage: p } ; let i = index" >
+          <div class="eq-slide-card card-maq-new">
+            <div class="eq-maquina-image">
+              <div class="totally-item">
+                <ngb-carousel>
+                  <div *ngFor="let imagen of maquina.urlImages">
+                    <ng-template ngbSlide>
+                      <a [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">
+                        <img [src]="imagen" alt="Maquinaria pesada: {{ maquina.category.name }} - marca: {{ maquina.brand.name }} - modelo: {{ maquina.modelo }}">
+                      </a>
+                    </ng-template>
+                  </div>
+                </ngb-carousel>
+
+              </div>
+              <div class="count-img">
+                <span>{{ maquina.urlImages.length}}</span>
+                <i class="material-icons">camera_alt</i>
+              </div>
+            </div>
+            <div [ngClass]="{'active-favorite-maq': maquina.favorito}" (click)="addFavorito(maquina.id)" class="container-star-maq">
+              <div class="maquina-star border-favorite opera-star">
+                <i class="material-icons">favorite_border</i>
+              </div>
+              <div class="maquina-star complete-favorite opera-star">
+                <i class="material-icons rojo">favorite</i>
+              </div>
+            </div>
+            <div class="eq-maquina-title">
+              <div class="sub-cat-model">{{ maquina.category.name }}</div>
+              <h2 class="maquina-name">{{ maquina.brand.name }}
+                <div class="maquina-marca">{{ maquina.modelo }}</div>
+              </h2>
+            </div>
+            <div class="eq-maquina-info">
+              <div class="maquina-ubicacion">
+                <div class="maquina-direccion">{{ maquina.uDepartamento}} - {{ maquina.uProvincia }} - {{ maquina.uDistrito }}
+                </div>
+              </div>
+              <div class="price-points">
+                <div class="price-maqs" (click)="administrar(maquina.$key)">
+                  <a *ngIf="!maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">{{ maquina.moneda }} {{ maquina.prPrecio }}</a>
+                  <a *ngIf="maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]"> {{ 'CONSULTAR' }}</a>
+                </div>
+                <div class="content-rating-stars" *ngIf="maquina.rkStarTotal && maquina.rkStarTotal >= 0">
+                  <div class="ratingControl">
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                    <div [ngClass]="{'active': maquina.rkStarTotal*10 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+                    <div [ngClass]="{'active':maquina.rkStarTotal*10 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="pagination">
+        <pagination-controls class="custom" previousLabel="" nextLabel="" (pageChange)="topPage($event)"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<!--
+<div class="marcas" *ngIf="!brandId">
+  <h1>MARCAS</h1>
+  <ul>
+    <li *ngFor="let brand of brands" (click)="filter('brand',brand)">
+      {{brand.name}}
+    </li>
+  </ul>
+</div>
+
+<div class="categorias" *ngIf="!categoryId">
+  <h1>CATEGORIAS</h1>
+  <ul>
+    <li *ngFor="let category of categories" (click)="filter('category',category)">
+      {{category.name}}
+    </li>
+  </ul>
+</div>
+
+<div class="categorias" *ngIf="!type">
+  <h1>TIPO</h1>
+  <ul>
+    <li *ngFor="let tipo of tipos" (click)="filter('tipo',tipo)">
+      {{tipo}}
+    </li>
+  </ul>
+</div>
+
+<div class="categorias" *ngIf="!condition">
+  <h1>CONDICION</h1>
+  <ul>
+    <li *ngFor="let condicion of condiciones" (click)="filter('condicion',condicion)">
+      {{condicion}}
+    </li>
+  </ul>
+</div> -->
+
+
+
+
+
+
+
+
+<!-- PRUEBAS -->
+
+<!-- <div class="container-maquinarias-select">
+  <div class="container-new">
+    <div class="content-maquinarias-select">
+      <div class="eq-buscador-categoria">
+        <div class="content-select-categoria">
+          <div (click)="clickSelect('categoria'); btnFondo = true;" class="select-header-filter">
+            <div class="select-title">{{ valueCategoria.nombre }}</div>
+            <div class="select-flecha">
+              <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+          </div>
+          <div [ngClass]="{'active':btnCateg}" class="select-body-filter">
+            <ul>
+              <li *ngFor="let categoria of listCategoria" (click)="valueCategoria = categoria; btnFondo = false; clickSelect('');filterSelectCategoria();"
+                class="item-select">
+                <div class="select-title">{{ categoria.nombre }}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="eq-buscador-ordenar">
+        <div class="content-select-ordenar">
+          <div (click)="clickSelect('ordenar'); btnFondo = true;" class="select-header-filter">
+            <div class="select-title">{{ valueOrden }}</div>
+            <div class="select-flecha">
+              <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+          </div>
+          <div [ngClass]="{'active':btnOrden}" class="select-body-filter">
+            <ul>
+              <li *ngFor="let orden of listOrden; let i = index" (click)="btnFondo = false; clickSelect('');filterSelectOrdenar(orden)"
+                class="item-select">
+                <div class="select-title">{{ orden }}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="eq-buscador-categoria year-category">
+        <div class="content-select-categoria">
+          <div (click)="clickSelect('ano'); btnFondo = true;" class="select-header-filter">
+            <div class="select-title">{{ valueAno }}</div>
+            <div class="select-flecha">
+              <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+          </div>
+          <div [ngClass]="{'active':btnano}" class="select-body-filter">
+            <ul>
+              <li *ngFor="let ano of listAno" (click)="btnFondo = false; clickSelect('');filterSelectAno(ano.ano);" class="item-select">
+                <div class="select-title">{{ ano.ano }}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="btn-maq-logo btn-change-view hiddenfornow" (click)="mostrar()" [ngClass]="{'activemaplogo':ColorMapLogo}"><i class="icon-Isotipo-Mapa-first"></i></button>
+      <div class="eq-buscador-categoria model-list-grid" (click)="togg()">
+        <button class="btn-change-view"><i class="material-icons">view_module</i></button>
+        <button class="btn-change-view"><i class="material-icons">view_list</i></button>
+        <button class="btn-cover-change" [ngClass]="{'step-activo': viewGallery=='list'}"></button>
+      </div>
+      <button class="filter-view" (click)="MostrarFiltro = !MostrarFiltro"><i class="material-icons">filter_list</i></button>
+      <div class="eq-buscador-buscatotal">
+        <div class="content-input-buscatotal">
+          <div class="input-buscatotal">
+            <input type="text" name="filterbuscar" [(ngModel)]="valueBuscatotal" (keyup.enter)="filterInputText()" placeholder="Buscar marca..."
+              class="limpia-input">
+          </div>
+          <div (click)="filterInputText()" class="select-flecha">
+            <i class="material-icons">search</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container-new p-cont container-maqs-fade">
+  <div class="principal container-all-maqs container-new_smq" [ngClass]="{'step-activo': viewGallery == 'galery'}">
+
+    <div class="contentcar" *ngFor="let maquina of listaMaquinarias | paginate: { itemsPerPage: 16, currentPage: p } ; let i = index">
+      <div class="eq-slide-card card-maq-new">
+        <div class="eq-maquina-image">
+          <div class="totally-item">
+            <div (click)="administrar(maquina.$key)" *ngFor="let imagen of maquina.imagenes.split(',')">
+              <img [attr.data-lazy]="imagen" alt="Maquinaria publicada en easymaq">
+            </div>
+          </div>
+          <div class="count-img">
+            <span>{{ maquina.imagenes.split(',').length}}</span>
+            <i class="material-icons">camera_alt</i>
+          </div>
+        </div>
+        <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
+          <div class="maquina-star border-favorite opera-star" (click)="maquina.favorito = addFavorite(maquina.$key, 'publicacion');">
+            <i class="material-icons">favorite_border</i>
+          </div>
+          <div class="maquina-star complete-favorite opera-star" (click)="maquina.favorito = deleteFavorite(maquina.favorito);">
+            <i class="material-icons rojo">favorite</i>
+          </div>
+        </div>
+        <div class="eq-maquina-title">
+          <div class="sub-cat-model">{{ categoriaFunciones.getNameSubcategoria(maquina.categoria) }}</div>
+          <h2 class="maquina-name">{{ maquina.marca }} {{maquina.rkpublicar}}
+            <div class="maquina-marca">{{ maquina.modelo }}</div>
+          </h2>
+        </div>
+        <div class="eq-maquina-info">
+          <div class="maquina-ubicacion">
+            <div class="maquina-direccion">{{ convertUbigeo.getDepartamento(maquina.departamento)}} - {{ convertUbigeo.getProvincia(maquina.departamento,
+              maquina.provincia) }} - {{ convertUbigeo.getDistrito(maquina.departamento, maquina.provincia, maquina.distrito)
+              }}
+            </div>
+          </div>
+          <div class="price-points">
+            <div class="price-maqs" (click)="administrar(maquina.$key)">
+              <div *ngIf="maquina.moneda == 'S/'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciosoles }}</div>
+              <div *ngIf="maquina.moneda == 'US$'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciodolares }}</div>
+              <div *ngIf="maquina.moneda == 'consultar'" class="detalle-precio"> {{ maquina.precioconsutar }}</div>
+            </div>
+            <div class="content-rating-stars">
+              <div class="ratingControl">
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+                <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="principal container-list-maqs" [ngClass]="{'step-activo': viewGallery == 'list'}">
+    <div class="contentcar list-premium" *ngFor="let maquina of listaMaquinariasPremiun; let i = index">
+      <div class="eq-slide-card card-maq-new">
+        <div class="eq-maquina-image">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+          <div class="count-img">
+            <span>{{ maquina.imagenes.split(',').length}}</span>
+            <i class="icon-Cam-2"></i>
+          </div>
+        </div>
+        <div class="right-maq">
+          <div class="eq-maquina-title">
+            <div class="sub-cat-model">{{ categoriaFunciones.getNameSubcategoria(maquina.categoria) }}</div>
+            <div class="maquina-name">
+              <h5 class="marca-tittle">{{ maquina.marca }} {{maquina.rkpublicar}}</h5>
+              <div class="maquina-marca">{{ maquina.modelo }}</div>
+            </div>
+          </div>
+          <div class="eq-maquina-info">
+            <div class="maquina-ubicacion">
+              <div class="maquina-direccion"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ convertUbigeo.getDepartamento(maquina.departamento)}}
+                - {{ convertUbigeo.getProvincia(maquina.departamento, maquina.provincia) }} - {{ convertUbigeo.getDistrito(maquina.departamento,
+                maquina.provincia, maquina.distrito) }}</div>
+            </div>
+            <div class="price-points">
+              <div class="price-maqs" (click)="administrar(maquina.$key)">
+                <div *ngIf="maquina.moneda == 'S/'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciosoles }}</div>
+                <div *ngIf="maquina.moneda == 'US$'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciodolares }}</div>
+                <div *ngIf="maquina.moneda == 'consultar'" class="detalle-precio"> {{ maquina.precioconsutar }}</div>
+              </div>
+              <div class="content-rating-stars">
+                <div class="ratingControl">
+                  <div [ngClass]="{'active': 37 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+                  <div [ngClass]="{'active': 37 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+                  <div [ngClass]="{'active': 37 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+                  <div [ngClass]="{'active': 37 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+                  <div [ngClass]="{'active': 37 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+                  <div [ngClass]="{'active': 37 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
+          <div class="maquina-star border-favorite opera-star" (click)="maquina.favorito = addFavorite(maquina.$key, 'publicacion');">
+            <i class="material-icons">favorite_border</i>
+          </div>
+          <div class="maquina-star complete-favorite opera-star" (click)="maquina.favorito = deleteFavorite(maquina.favorito);">
+            <i class="material-icons rojo">favorite</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contentcar list-destacado" *ngFor="let maquina of listaMaquinariasDestacadas; let i = index">
+      <div class="eq-slide-card card-maq-new">
+        <div class="eq-maquina-image">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+        </div>
+        <div class="right-maq">
+          <div class="eq-maquina-title">
+            <div class="sub-cat-model">{{ categoriaFunciones.getNameSubcategoria(maquina.categoria) }}</div>
+            <div class="maquina-name">
+              <h5 class="marca-tittle">{{ maquina.marca }} {{maquina.rkpublicar}}</h5>
+              <div class="maquina-marca">{{ maquina.modelo }}</div>
+            </div>
+          </div>
+          <div class="eq-maquina-info">
+            <div class="maquina-ubicacion">
+              <div class="maquina-direccion"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ convertUbigeo.getDepartamento(maquina.departamento)}}
+                - {{ convertUbigeo.getProvincia(maquina.departamento, maquina.provincia) }} - {{ convertUbigeo.getDistrito(maquina.departamento,
+                maquina.provincia, maquina.distrito) }} </div>
+              <div class="price-maqs" (click)="administrar(maquina.$key)">
+                <div *ngIf="maquina.moneda == 'S/'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciosoles }}</div>
+                <div *ngIf="maquina.moneda == 'US$'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciodolares }}</div>
+                <div *ngIf="maquina.moneda == 'consultar'" class="detalle-precio"> {{ maquina.precioconsutar }}</div>
+              </div>
+            </div>
+            <div class="price-points">
+              <div class="content-rating-stars">
+                <div class="ratingControl">
+                  <div [ngClass]="{'active': 37 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+                  <div [ngClass]="{'active': 37 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+                  <div [ngClass]="{'active': 37 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+                  <div [ngClass]="{'active': 37 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+                  <div [ngClass]="{'active': 37 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': 37 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+                  <div [ngClass]="{'active': 37 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+                </div>
+              </div>
+              <div class="right-list-detacado">
+                <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
+                  <div class="maquina-star border-favorite opera-star" (click)="maquina.favorito = addFavorite(maquina.$key, 'publicacion');">
+                    <i class="material-icons">favorite_border</i>
+                  </div>
+                  <div class="maquina-star complete-favorite opera-star" (click)="maquina.favorito = deleteFavorite(maquina.favorito);">
+                    <i class="material-icons rojo">favorite</i>
+                  </div>
+                </div>
+                <div class="count-img">
+                  <span>{{ maquina.imagenes.split(',').length}}</span>
+                  <i class="material-icons">camera_alt</i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contentcar" *ngFor="let maquina of listaMaquinarias; let i = index">
+      <div class="eq-slide-card card-maq-new">
+        <div class="eq-maquina-image">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+          <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
+            <div class="maquina-star border-favorite opera-star" (click)="maquina.favorito = addFavorite(maquina.$key, 'publicacion');">
+              <i class="material-icons">favorite_border</i>
+            </div>
+            <div class="maquina-star complete-favorite opera-star" (click)="maquina.favorito = deleteFavorite(maquina.favorito);">
+              <i class="material-icons rojo">favorite</i>
+            </div>
+          </div>
+          <div class="count-img">
+            <span>{{ maquina.imagenes.split(',').length}}</span>
+            <i class="material-icons">camera_alt</i>
+          </div>
+        </div>
+        <div class="right-maq">
+          <div class="eq-maquina-title">
+            <div class="sub-cat-model">{{ categoriaFunciones.getNameSubcategoria(maquina.categoria) }}</div>
+            <div class="maquina-name">
+              <h5 class="marca-tittle">{{ maquina.marca }} {{maquina.rkpublicar}}</h5>
+              <div class="maquina-marca">{{ maquina.modelo }}</div>
+            </div>
+          </div>
+          <div class="eq-maquina-info">
+            <div class="maquina-ubicacion">
+              <div class="maquina-direccion">{{ convertUbigeo.getDepartamento(maquina.departamento)}} - {{ convertUbigeo.getProvincia(maquina.departamento,
+                maquina.provincia) }} - {{ convertUbigeo.getDistrito(maquina.departamento, maquina.provincia, maquina.distrito)
+                }}
+              </div>
+            </div>
+            <div class="price-points">
+              <div class="price-maqs" (click)="administrar(maquina.$key)">
+                <div *ngIf="maquina.moneda == 'S/'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciosoles }}</div>
+                <div *ngIf="maquina.moneda == 'US$'" class="detalle-precio">{{ maquina.moneda }} {{ maquina.preciodolares }}</div>
+                <div *ngIf="maquina.moneda == 'consultar'" class="detalle-precio"> {{ maquina.precioconsutar }}</div>
+              </div>
+              <div class="content-rating-stars">
+                <div class="ratingControl">
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 50}" class="ratingControl-stars ratingControl-stars--5"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 45}" class="ratingControl-stars ratingControl-stars--45 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 40}" class="ratingControl-stars ratingControl-stars--4"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 35}" class="ratingControl-stars ratingControl-stars--35 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 30}" class="ratingControl-stars ratingControl-stars--3"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 25}" class="ratingControl-stars ratingControl-stars--25 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 20}" class="ratingControl-stars ratingControl-stars--2"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 15}" class="ratingControl-stars ratingControl-stars--15 ratingControl-stars--half"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 10}" class="ratingControl-stars ratingControl-stars--1"></div>
+                  <div [ngClass]="{'active': (functionsRanking.getstarRank(maquina.author.rkpublicar)).promedio*10 >= 5}" class="ratingControl-stars ratingControl-stars--05 ratingControl-stars--half"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="principal principalmapa" [ngClass]="{'step-activo': viewGallery == 'mapa'}">
+    <div [ngClass]="{'viewactive': Mapvisible}" class="mapa cnt">
+      <div class="map-hidden" (click)="CloseView()"><i class="icon-cancel-form"></i></div>
+      <app-mapa-publicados class="mapa_first_h"></app-mapa-publicados>
+    </div>
+  </div>
+  <div class="container-filter" [ngClass]="{'ViewFilter': MostrarFiltro}">
+    <ul class="container-filters-mobile">
+      <li (click)="ToggleFilter[0] = !ToggleFilter[0]">
+        <h4>Categoria</h4>
+        <div class="mobile-list-container" [ngClass]="{'active-ul-option' : ToggleFilter[0] == true}">
+          <ul class="mobile-list-options">
+            <li *ngFor="let categoria of listCategoria" (click)="valueCategoria = categoria; clickSelect('');filterSelectCategoria();MostrarFiltro = false;"
+              class="item-select">
+              <span class="select-title">{{ categoria.nombre }}</span>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="ToggleFilter[1] = !ToggleFilter[1]">
+        <h4>Ordenar por</h4>
+        <div class="mobile-list-container" [ngClass]="{'active-ul-option' : ToggleFilter[1] == true}">
+          <ul class="mobile-list-options">
+            <li *ngFor="let orden of listOrden; let i = index" (click)="valueOrden = orden; btnFondo = false; clickSelect('');prueba(i);MostrarFiltro = false;"
+              class="item-select">
+              <span class="select-title">{{ orden }}</span>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="ToggleFilter[2] = !ToggleFilter[2]">
+        <h4>Año</h4>
+        <div class="mobile-list-container" [ngClass]="{'active-ul-option' : ToggleFilter[2] == true}">
+          <ul class="mobile-list-options">
+            <li *ngFor="let ano of listAno" (click)="valueAno = ano.ano; btnFondo = false; clickSelect('');busqano(ano.ano);MostrarFiltro = false;"
+              class="item-select">
+              <span class="select-title">{{ ano.ano }}</span>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="btn-cancel-filter" (click)="MostrarFiltro = !MostrarFiltro">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+  </div>
+  <div class="pagination">
+    <pagination-controls class="custom" previousLabel="" nextLabel="" (pageChange)="topPage($event)"></pagination-controls>
+  </div>
+
+</div>-->
+<app-footer></app-footer>
+<!-- <app-easymodal [dataconfig]="misdatosdataconfig"></app-easymodal> -->
+<section [ngClass]="{active: eqFondo}" (click)="eqFondo=false; hola=false" class="eq-fondo"></section>

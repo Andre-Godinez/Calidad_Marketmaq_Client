@@ -1,0 +1,302 @@
+@import "../../theme/theme.scss";
+.eq-container-breadcrumb{
+    display: none;
+    @include media(tbland){
+        display: block;
+    }
+}
+.tittle-step-reclamaciones{
+    text-align: center;
+    padding: 25px 0;
+    margin: 0;
+    display: none;
+    position: relative;
+    @include fontChico;
+    @include pefontsizeheight(26px,1,26px,1,18px,1);
+    &:after{
+        content: '';
+        position: absolute;
+        bottom:0px;
+        left: 0px;
+        height: 2px;
+        width: 100%;
+        background: rgba($divider-color,.5);
+    }
+    @include media(tbland){
+       display:block; 
+    } 
+}
+.cnt-steps-reclamaciones{
+    @include media(tbland){
+        background-color:$fondos;
+        padding:0 15px 20px;
+    }
+    @include media(desk){
+        position: relative;
+        padding-bottom: 45px;
+        margin-bottom: 30px;
+    }
+}
+.select-type-reclamos{
+    max-width: 750px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.cnt_input_reclamaciones{
+    .mt_select_label{
+        display: block;
+        font-size: 15px;
+        color:#BDBDBD;
+        margin-bottom: 10px;
+        @include fontChico;
+        span{
+            display:inline-block;
+            color:$accent-color;
+            margin-left: 5px;
+        }
+        .mat-select-underline{
+            bottom:5px;
+        }
+    }
+    .mt_input,.mt_select{
+        margin:0;
+        padding-bottom: 6px;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+                flex-direction:column;
+        width: 48%;
+        margin-right: 2%;
+        display:-webkit-inline-box;
+        display:-ms-inline-flexbox;
+        display:inline-flex;
+        .mat-input-wrapper{
+            margin:0;
+        }
+        @include media(tb){
+            margin: 0 2% 0.5rem 0;
+        }
+    }
+    .mt_input{
+        margin-right:0;
+    }
+    @include media(tb){
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:flex;
+        -ms-flex-wrap:wrap;
+            flex-wrap:wrap;
+        .mt_select{
+            margin-right: 0;
+        }
+        .list_input,{
+            width: 32%;
+            margin-right: 2%;
+            margin-bottom: 0.5rem;
+        }
+        .list_apellidos{
+            width:66%;
+            margin-right: 0;
+        }
+    }
+    .list_correo{
+        margin-right: 0;
+    }
+}
+.ck_age{
+    margin:1em 0;
+    @include media(tb){
+        .mat-checkbox{
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+    }
+}
+.mt_select_label{
+ margin-bottom: 20px !important;
+
+}
+.send-reclam{
+    @include fontMedio;
+    display:none;
+    margin:0 auto;
+    background-color:$accent-color ;
+    width: 100%;
+    max-width: 190px;
+    color:#fff;
+    letter-spacing: 1px;
+    line-height: 50px;
+    border:none;
+    height: 50px;
+    text-align: center;
+    cursor:pointer;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    @include media(tbland){
+        display: block;
+    }
+}
+.second-step{
+    .list_input{
+        margin:1em 0;
+    }
+    .list_text_desripcion{
+        width: 100%;
+        .mat-input-container{
+            width: 100%;
+        }
+        @include media(tb){
+            textarea{
+                min-height: 70px;
+            }
+        }
+        @include media(desk){
+            textarea{
+                min-height: 130px;
+            }
+        }
+    }
+    @include media(tb){
+        .list_input{
+            margin-right: 2%;
+        }
+        .list_subcat{
+            margin-right: 0;
+        }
+        .list_mont{
+            margin-right: 0;
+            width: 60%;
+            .bloq-mont:first-child{
+                width: 53%;
+            }
+        }
+    }
+}
+/*style step*/
+.list_mont{
+    .bloq-mont{
+        &:first-child{
+            width: 50%;
+            margin-right: 5%;
+        }
+        .type-person_leftspan{
+            margin-right: 1rem;
+        }
+    }
+    @include media(tbland){
+        width: 60%;
+    }
+}
+.list_input .mat-select-trigger{
+	height: 20px;
+}
+.list_input .mat-select-trigger .mat-select-arrow{
+	align-self: flex-start;
+}
+.second-step .mat-select{
+	width: 100%;
+}
+.select-type-reclamos{
+    .type-person_leftspan{
+        width: 100%;
+        max-width: 65px;
+        font-size: 12px;
+    }
+	.type-person_span{
+        width: 100%;
+		display: block;
+		white-space: normal !important;
+        margin-left: 20px;
+	}
+    .check-reclamos{
+        margin-bottom: 1.5rem;
+    }
+    .mat-radio-button,.mat-radio-label{
+        width: 100%;
+    }
+    .rec_btm{
+        margin-bottom: 0.8rem;
+    }
+    @include media(tb){
+        .type-person_leftspan{
+            font-size: 14px;
+        }
+    }
+}
+.list_input textarea{
+	resize: none;
+}
+.last-step .select-type-reclamos label{
+	display: block;
+}
+.last-step{
+    .detail_area{
+        .mat-input-container{
+            width: 100%;
+        }
+        .mat-input-underline{
+            border-color:#757575;
+        }
+        width: 100%;
+        @include media(tb){
+            min-height: 70px;
+            .mat-input-underline{
+                border-top-width: 2px;
+            }
+        }
+        @include media(desk){
+            margin-bottom:30px ;
+            textarea{
+                min-height: 130px;
+            }
+            .mat-input-wrapper{
+                margin-top: 0;
+            }
+        }
+    }
+    .detail_area_mbt{
+        @include media(desk){
+            margin-bottom:50px;
+        }
+    }
+}
+.stepsjs{
+    @include media(desk){
+        display:block !important;
+        opacity:1;
+    }
+}
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.eq-breadcrumb{
+    @include media(tbland){
+        padding:0 15px;
+    }
+}
+.cnt-reclamaciones{
+    margin-top: 15px;
+    @include media(tbland){
+        margin-top: 30px;
+    }
+}
+.first-step .cnt_input_reclamaciones{
+     .mat-select-underline{
+         bottom:5px;
+     }
+}
+
+.mat-input-container{
+    width: 100%;
+    .mat-input-underline{
+        border-width: 2px !important;
+        border-color: #757575 !important;
+    }
+}

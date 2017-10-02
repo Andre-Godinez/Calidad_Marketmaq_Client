@@ -1,0 +1,31 @@
+<div class="fondo" *ngIf="inf">
+  <div class="informate-container">
+    <div class="informate-content">
+      <div class="informate-title">
+        PLANES CORPORATIVOS
+      </div>
+      <div class="img-close" (click)="inf=!inf">
+        <img src="assets/icon/close.png" alt="Icono easymaq para boton de cerrado">
+      </div>
+      <div class="informate-form">
+        <form #formlogin="ngForm" class="eq-login-form" novalidate="novalidate">
+          <div class="eq-login-pass">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Nombre completo" name="nombre" type="text" ngModel required>
+            </md-input-container>
+          </div>
+          <div class="eq-login-email">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Correo electronico" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                #pru="ngModel" FormControlName="emaila">
+            </md-input-container>
+            <div *ngIf="pru.errors?.pattern" class="tipo_letra">El campo no tiene el formato de correo, por favor ingrese un correo valido</div>
+          </div>
+          <button (click)="enviarMailCoorp(formlogin.value.nombre,formlogin.value.email); inf=!inf;" class="eq-btn-enviar">
+                            Recibir información
+                </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

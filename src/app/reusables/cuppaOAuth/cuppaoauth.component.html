@@ -1,0 +1,139 @@
+<div *ngIf="!_authService.isLoggedIn()" [ngClass]="{active:btnlogin}" class="eq-fondo-logingris">
+</div>
+<div *ngIf="!_authService.isLoggedIn()" [ngClass]="{active:btnlogin}" class="eq-fondo-login">
+  <div class="eq-container-login">
+    <div (click)="btnlogin = false; btnreg='logeo'; lanzar($event);" class="eq-login-close">
+      <img src="assets/icon/close.png" alt="Icono easymaq para boton de cerrado login">
+    </div>
+
+    <div [ngClass]="{active: btnreg=='logeo'}" class="eq-content-login">
+      <div class="eq-login-header">
+        <div class="eq-login-title">iniciar sesión</div>
+      </div>
+      <div class="eq-login-body">
+        <!-- <div class="eq-login-social">
+          <div (click)="login('facebook')" class="eq-btn-facebook">
+            <div class="facebook-logo">
+              <img src="assets/icon/facebook.png" alt="icono de facebook">
+            </div>
+            <div class="facebook-text">Ingresa con Facebook</div>
+          </div>
+          <div (click)="login('google')" class="eq-btn-google">
+            <div class="google-logo">
+              <img src="assets/icon/google_plus.png" alt="icono de google plus">
+            </div>
+            <div class="google-text">Ingresa con Google</div>
+          </div>
+          <div class="eq-login-separador">&oacute;</div>
+        </div> -->
+
+        <form #formlogin="ngForm" class="eq-login-form" novalidate="novalidate">
+          <div class="eq-login-email">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Correo electronico" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                #pru="ngModel" FormControlName="emaila">
+            </md-input-container>
+            <div *ngIf="pru.errors?.pattern" class="tipo_letra">El campo no tiene el formato de correo, por favor ingrese un correo valido</div>
+          </div>
+          <div class="eq-login-pass">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Contraseña" name="pass" type="password" ngModel required>
+            </md-input-container>
+          </div>
+          <button type="submit" (click)="login( 'email', formlogin.value.email , formlogin.value.pass, pru.errors?.pattern )" class="eq-btn-enviar">
+                        Entrar
+                    </button>
+        </form>
+
+        <div class="eq-login-access">
+          <div (click)="btnreg='recuperar'" class="eq-login-olvido">
+            ¿Olvidaste tu contraseña?
+          </div>
+          <div (click)="btnreg='registro'" class="eq-login-registro">
+            registrate
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngClass]="{active: btnreg=='registro'}" class="eq-content-login">
+      <div class="eq-login-header">
+        <div class="eq-login-title">registrate</div>
+      </div>
+      <div class="eq-login-body">
+        <!-- <div class="eq-login-social">
+          <div (click)="login('facebook')" class="eq-btn-facebook">
+            <div class="facebook-logo">
+              <img src="assets/icon/facebook.png" alt="icono de facebook">
+            </div>
+            <div class="facebook-text">Registrar con Facebook</div>
+          </div>
+          <div (click)="login('google')" class="eq-btn-google">
+            <div class="google-logo">
+              <img src="assets/icon/google_plus.png" alt="icono de google plus">
+            </div>
+            <div class="google-text">Registrar con Google</div>
+          </div>
+          <div class="eq-login-separador">&oacute;</div>
+        </div> -->
+
+        <form #formregister="ngForm" class="eq-login-form" novalidate="novalidate">
+          <div class="eq-login-email">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Correo electronico" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                #pru="ngModel" FormControlName="emaila">
+            </md-input-container>
+            <div *ngIf="pru.errors?.pattern" class="tipo_letra">El campo no tiene el formato de correo, por favor ingrese un correo valido</div>
+          </div>
+          <div class="eq-login-pass">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Contraseña" name="pass" type="password" ngModel required>
+            </md-input-container>
+          </div>
+          <button type="submit" (click)="register(formregister.value.email , formregister.value.pass, pru.errors?.pattern )" class="eq-btn-enviar">
+                        Entrar
+                    </button>
+        </form>
+
+        <div class="eq-register-access">
+          <div class="eq-tienes-text">
+            ¿Ya tienes una cuenta?
+          </div>
+          <div (click)="btnreg='logeo'" class="eq-login-cuenta">
+            Haz clic para iniciar sesión
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngClass]="{active: btnreg=='recuperar'}" class="eq-content-login">
+      <div class="eq-login-header">
+        <div class="eq-login-title">Recuperar Contraseña</div>
+      </div>
+      <div class="eq-login-body">
+        <br>
+        <form #olvidocontra="ngForm" class="eq-login-form">
+          <div class="eq-login-email">
+            <md-input-container class="full-width">
+              <input mdInput placeholder="Correo electronico" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                #pru3="ngModel" FormControlName="emaila" >
+            </md-input-container>
+            <div *ngIf="pru3.errors?.pattern" class="tipo_letra">El campo no tiene el formato de correo, por favor ingrese un correo valido</div>
+          </div>
+          <div (click)="olvido(olvidocontra.value.email, pru3 )" class="eq-btn-enviar">
+            Enviar
+          </div>
+        </form>
+        <div class="eq-register-access">
+          <div class="eq-tienes-text">
+            ¿Ya tienes una cuenta?
+          </div>
+          <div (click)="btnreg='logeo'" class="eq-login-cuenta">
+            Haz clic para iniciar sesión
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-easymodal [dataconfig]="logindataconfig" (pasaBtnmodal)="showBtnmodal($event)"></app-easymodal>

@@ -1,0 +1,88 @@
+// @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600italic,700,800";
+// @import "https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900";
+
+
+.vacio{
+	display: none;
+}
+.invisible{
+	opacity: 0;
+}
+.sombra{
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+.content-post-date{
+  text-transform: lowercase;
+}
+
+.limpia-input{
+  border: 0;
+  &:focus{
+      outline:0px;
+  }
+}
+/* Inicio iframe responsive */
+.iframe16by9{
+  @include iframe16by9;
+}
+.video16-9{
+  @include iframe16by9;
+  margin: 0 0 20px 0;
+}
+.iframe4by3{
+  @include iframe4by3;
+}
+/* Fin iframe responsive */
+
+
+.ripple{
+  overflow:hidden;
+  border: none;
+  outline:none;
+}
+
+.ripple-effect{
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+
+  animation: ripple-animation 2s;
+}
+
+@include keyframes(ripple-animation){
+    from {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(100);
+      opacity: 0;
+    }
+}
+
+
+/* Inicio fa-pulse */
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
+}
+
+
+@include keyframes(fa-spin){
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* Inicio fa-pulse */

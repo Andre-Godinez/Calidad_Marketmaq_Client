@@ -1,0 +1,26 @@
+<!-- <md-input-container class="full-width">
+  <input mdInput placeholder="Correo electronico" name="email" ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+    >
+</md-input-container>
+ -->
+<!--<button (click)="login('google')" type="button" class="btn btn-outline-primary">
+    Google
+</button>
+<button (click)="login('facebook')" type="button" class="btn btn-outline-info">
+    facebook
+</button>
+<button (click)="login('email','yesica.quispe.r@gmail.com','123456')" type="button" class="btn btn-outline-info">
+    email
+</button>
+<button (click)="registro('yesica.quispe.r@gmail.com','123456')" type="button" class="btn btn-outline-info">
+    email
+</button>
+<button (click)="logout()" type="button" class="btn btn-outline-danger">Salir</button>-->
+<!--<button (click)="logout()" type="button" class="btn btn-outline-danger" style="position:fixed; z-index:8000000;">Salir</button>-->
+
+<div *ngIf="!_ls.usuario" [ngClass]="{active:btnlogin}" class="eq-fondo-logingris">
+</div>
+<div *ngIf="!_ls.usuario" [ngClass]="{active:btnlogin}" class="eq-fondo-login">
+  <!-- <cuppa-oauth [authConfig]="config"></cuppa-oauth> -->
+</div>
+<app-easymodal [dataconfig]="logindataconfig"></app-easymodal>

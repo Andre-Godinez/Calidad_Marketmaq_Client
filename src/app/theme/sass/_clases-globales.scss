@@ -1,0 +1,441 @@
+@import "conf/conf.scss";
+
+/******** Inicio Barra para clocar un titulo en medio de la papgina en todo el ancho */
+.eq-general-title{
+    min-height: 20px;
+    background: $fondos;
+    width: 100%;
+    padding:15px 20px;
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(center);
+    text-align: center;
+    @include align-items(center);
+    .eq-general-text{
+        color: $secondary-text-color;
+        text-transform: uppercase;
+        width: 100%;
+        @include ajustacontrespuntos;
+        // @include prefixer(text-shadow, 3px 2px 3px rgba(105, 105, 105, 1));
+        @include fontMedio;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(center);
+        text-align: center;
+        @include align-items(center);
+        // @include flex-wrap(wrap);
+        @include flex(1, 1, 0);
+        font-size: 20px;
+        @include media(tb){
+            font-size: 25px;
+        }
+        @include media(desk){
+            font-size: 40px;
+        }
+    }
+}
+/******** Fin Barra para clocar un titulo en medio de la papgina en todo el ancho */
+
+/******** Fin Style breadcrumb */
+
+/******** Social Network mobile */
+.eq-container-detalle-accesos{
+    position: fixed;
+    z-index: 8000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: transparent;
+    @include prefixer(background, linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85)));
+    @include media(tb){
+        display: none;
+    }
+    .eq-content-detalle-accesos{
+        width: 100%;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(space-around);
+        @include align-items(center);
+        // @include flex-wrap(wrap);
+        // @include flex(1, 1, 0);
+        .content-acceso-mapa{
+            border-radius: 100%;
+            background: $divider-color;
+            cursor: pointer;
+            @include cuadrado(58px);
+            @include card-shadow(3);
+            @include transitiondefault(100ms);
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(center);
+            text-align: center;
+            @include align-items(center);
+            // @include flex-wrap(wrap);
+            // @include flex(1, 1, 0);
+            &:active{
+                @include card-shadow(4);
+                background: $accent-color;
+                @include cuadrado(66px);
+                i{
+                    font-size: 48px;
+                }
+            }
+            &:hover{
+                background: $accent-color;
+            }
+            i{
+                color: $primary-color-text;
+                font-size: 40px;
+            }
+        }
+        .content-acceso-mensaje{
+            border-radius: 100%;
+            background: $accent-color;
+            cursor: pointer;
+            padding: 0 0 8px 6px;
+            @include cuadrado(66px);
+            @include card-shadow(3);
+            @include transitiondefault(300ms);
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(center);
+            text-align: center;
+            @include align-items(center);
+            // @include flex-wrap(wrap);
+            // @include flex(1, 1, 0);
+            &:active{
+                @include card-shadow(4);
+            }
+            i{
+                font-size: 48px;
+                color: $primary-color-text;
+                @include prefixer(transform,rotate(-45deg));
+            }
+        }
+        .content-acceso-favorito{
+            border-radius: 100%;
+            background: $divider-color;
+            cursor: pointer;
+            @include cuadrado(58px);
+            @include card-shadow(3);
+            @include transitiondefault(100ms);
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(center);
+            text-align: center;
+            @include align-items(center);
+            // @include flex-wrap(wrap);
+            // @include flex(1, 1, 0);
+            &.selec-favorito{
+                background: $accent-color;
+            }
+            &:active{
+                @include card-shadow(4);
+                background: $accent-color;
+                @include cuadrado(66px);
+                i{
+                    font-size: 48px;
+                }
+            }
+            &:hover{
+                background: $accent-color;
+            }
+            i{
+                color: $primary-color-text;
+                font-size: 40px;
+                padding-top: 3px;
+            }
+        }
+    }
+}
+/******** Social Network mobile */
+
+@keyframes BounceShared{
+    50% {
+        -webkit-transform: translateY(-170%);
+        transform: translateY(-170%);
+    }
+    100%{
+        opacity:1;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+}
+
+/******** Inicio card operario */
+.eq-operario-card{
+    background: $fondos;
+    border-radius: 4px;
+    // @include card-shadow(2);
+    @include media(minxs) {
+        @include prefixer(box-shadow, 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23));
+    }
+    @include media(maxxs) {
+        @include prefixer(box-shadow, 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23));
+    }
+    @include media(sm) {
+        @include prefixer(box-shadow, 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23));
+    }
+    @include media(md) {
+        @include prefixer(box-shadow, 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23));
+    }
+    @include media(lg) {
+        @include prefixer(box-shadow, 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23));
+    }
+    .eq-opera-title{
+        position: relative;
+        padding: 10px 3% 10px 3%;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(flex-start);
+        text-align: left;
+        @include align-items(flex-end);
+        // @include flex-wrap(wrap);
+        // @include flex(1, 1, 0);
+        &:after{
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 94%;
+            left: 2%;
+            bottom: 0;
+            background: $divider-color ;
+        }
+        .opera-name{
+            text-transform: capitalize;
+            max-width: 60%;
+            @include ajustacontrespuntos;
+            @include fontGrande;
+            @include pefontsizeheight(12px,1,12px,1,12px,1);
+        }
+        .opera-edad{
+            padding: 0 0 0 5px;
+            max-width: 40%;
+            text-transform: uppercase;
+            @include ajustacontrespuntos;
+            @include fontMedio;
+            @include pefontsizeheight(8px,1,8px,1,8px,1);
+        }
+    }
+    .eq-opera-info{
+        position: relative;
+        padding: 9px 90px 9px 3%;
+        .opera-habilidades{
+            overflow: hidden;
+            max-height: 52px;
+            height: 52px;
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(flex-start);
+            text-align: left;
+            @include align-items(center);
+            @include flex-wrap(wrap);
+            // @include flex(1, 1, 0);
+            .item-habilidad{
+                width: 20px;
+                height: 20px;
+                background: $primary-color-text;
+                border-radius: 2px;
+                margin: 3px 2px 3px 2px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .opera-contactar{
+            cursor: pointer;
+            @include prefixer(transform, translate(0,-50%));
+            @include cintaeasymaq(80px, 30px, $accent-color){
+                padding: 2px 0 0 0 ;
+                @include fontMedio;
+                @include pefontsizeheight(12px,1,12px,1,12px,1);
+
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(center);
+                text-align: center;
+                @include align-items(center);
+                // @include flex-wrap(wrap);
+                // @include flex(1, 1, 0);
+            };
+        }
+    }
+}
+
+.active-favorite-item,.active-favorite-maq{
+    .opera-star{
+        animation: animate-favorite 0.25s ease-in-out ;
+    }
+    .border-favorite{
+        z-index: -100;
+    }
+    .complete-favorite{
+        z-index: 100;
+        opacity: 1;
+        i{
+            color:$accent-color;
+        }
+    }
+}
+.border-favorite{
+    z-index: 100;
+}
+.complete-favorite{
+    z-index: -100;
+    opacity: 0;
+}
+@keyframes animate-favorite{
+    0%{
+        transform:scale(0);
+    }
+    80%{
+        transform:scale(1.2)
+    }
+    100%{
+        transform:scale(1)
+    }
+}
+/******** Inicio card operario */
+
+.arrow-sliders{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    z-index: 200;
+    display: block;
+    transform:translateY(-50%);
+    text-shadow: 2px -1px 1px dimgrey;
+    cursor:pointer;
+    i{
+        color:#fff;
+        font-size: 30px;
+    }
+}
+
+/********BREAD NEW *******/
+.eq-container-breadcrumb{
+    background: #fff;
+    padding:15px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include media(tb){
+        padding: 20px 0;
+        background: $fondos;
+    }
+    &.bread-box{
+        padding-bottom: 10px;
+        box-shadow:$border-shadow-bread;
+    }
+}
+.eq-breadcrumb{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 0;
+    >ul{
+        flex:1;
+        display: flex;
+        align-content: center;
+        padding-left: 10px;
+        margin:0;
+        >li{
+            display:flex;
+            align-items: center;
+        }
+        .breadcrumb-text{
+            font-size: 14px;
+            cursor:pointer;
+            text-transform: capitalize;
+            color:$accent-color;
+            @include fontChico;
+            @include media(tbland){
+                font-size: 16px;
+            }
+        }
+        .breadcrumb-icon{
+            margin-top: 3px;
+            display: flex;
+            color:$accent-color;
+            i{
+                font-size: 18px;
+            }
+            @include media(tbland){
+                font-size: 24px;
+            }
+        }
+    }
+}
+.eq-breadcrumb-atras{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 100%;
+    background: #ff5722;
+    width: 20px;
+    height: 20px;
+    i{
+        color:#fff;
+        font-size:20px;
+    }
+}
+.menu-steps-mobile{
+    height:84px;
+    margin:0;
+    display: flex;
+    background-color: $primary-color-dark;
+    justify-content: space-between;
+    padding: 0;
+    li{
+        list-style: none;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width: 33%;
+        button{
+            display: block;
+            height: 100%;
+            padding: 0;
+            background: transparent;
+            border: none;
+            color:#5C7689;
+            @include fontMedio;
+            i{
+                display: block;
+                font-size: 1.5rem;
+                margin-bottom: 7px;
+                &:before{
+                    color:#5C7689;
+                }
+            }
+        }
+    }
+    .step-activo{
+        button{
+            color:#fff;
+            i:before{
+                color:#FFF;
+            }
+        }
+    }
+    @include media(tbland){
+        display: none;
+    }
+}
+/*STEPS VIEW */
+.first-step,.second-step,.last-step{
+    display:none;
+    opacity:0;
+    &.step-activo{
+        display:block;
+        transform:none;
+        opacity: 1;
+    }
+    @include media(tbland){
+        display: block;
+        opacity: 1;
+    }
+}
+/*STEPS VIEW */

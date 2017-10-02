@@ -1,0 +1,57 @@
+<div class="eq-content-slider slider-home-cnt">
+  <div class="myslides">
+    <div class="banner-home">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let elite of publicacionesSlider">
+          <div class="carousel-caption" class="banner-home_image" [ngStyle]="{'background': 'url( '+elite.imagen_elite+' ) no-repeat','background-size': 'cover','background-position': 'center center'}">
+            <div class="eq-content-slider">
+
+              <div class="eq-container-letrero" *ngIf="elite.operacion!='operario'">
+                <div class="eq-content-letrero">
+                  <div class="eq-letrero-capa">
+                    <div class="letrero-subcategoria">{{elite.subcategoria}}</div>
+                    <div class="letrero-marca-modelo">{{elite.marca}} {{elite.modelo}}</div>
+                    <div class="letrero-direccion">{{elite.direccion}}</div>
+                    <div class="letrero-distrito">{{elite.distrito}} - {{elite.departamento}}</div>
+                    <div class="letrero-telefono">{{elite.telefono1}}</div>
+                    <div *ngIf="elite.logo" class="letrero-logo">
+                      <img [src]="elite.logo" alt="Logo de empresa">
+                    </div>
+                    <div class="letrero-content-operacion">
+                      <div class="letrero-capa-operacion">{{elite.operacion}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </ngb-carousel>
+    </div>
+  </div>
+
+  <div class="eq-container-buscador">
+    <div class="eq-content-buscador">
+      <div class="eq-content-buscador-header">
+        <div class="eq-pestanas">
+          <div [ngClass]="{'active':cli=='venta'}" (click)="cli = 'venta';" class="item-pestana">Venta</div>
+          <div [ngClass]="{'active':cli=='alquiler'}" (click)="cli = 'alquiler';" class="item-pestana">Alquiler</div>
+          <!--<div [ngClass]="{'active':cli=='operarios'}" (click)="valueOperacion='operarios'; cli = 'operarios';" class="item-pestana">Operarios</div>-->
+        </div>
+      </div>
+      <div class="eq-content-buscador-body">
+
+        <div class="eq-buscador-input">
+          <div class="content-buscar">
+            <i class="material-icons">search</i>
+            <input type="text" name="webbuscar" [(ngModel)]="valueText" placeholder="Buscar marca" (keyup.enter)="buscadorEasymaq()">
+            <label for="webbuscar" class="web-placeholder">Busca por descripción</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
