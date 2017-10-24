@@ -91,6 +91,7 @@ export class cuppaOAuth implements OnInit {
         password: pass
       }).subscribe((res: any) => {
         console.log('res: ', res);
+        this.login('email',email,pass);
       });
     }
   }

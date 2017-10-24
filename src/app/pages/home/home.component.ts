@@ -63,11 +63,18 @@ export class HomeComponent implements OnInit {
 
   actualizarslider(type) {
     let countryId = this.fcountry.id;
-    let query = `?order=DESC&type=${type}&limit=12&countryId=${countryId}`;
+    let query = `?order=DESC&type=${type}&limit=7&countryId=${countryId}`;
     let ultp = this._publicationService.get(query).
       subscribe(res => {
-        this.ultimasPubli = res;
-        console.log('Ultimas', this.ultimasPubli);
+        if(type==='venta'){
+          // res.splice((res.length-1),1);
+          this.ultimasPubli = res;
+          console.log('Ultimas venta', this.ultimasPubli);        
+          
+        }else{
+          this.ultimasPubli = res;
+          console.log('Ultimas alquiler', this.ultimasPubli);        
+        }
       }, (err: any) => {
         console.log('err : ', err);
       }, () => {

@@ -32,7 +32,7 @@ export class seoMaquinariasService {
     }
 
     getMetas() {
-        this.title = `Encuentre su maquinaria pesada en ${this.country.name} | Easymaq`;
+        this.title = `Encuentre su maquinaria pesada en ${this.country.name} | Marketmaq`;
         this.metas = [
             {
                 name: 'description',
@@ -45,10 +45,10 @@ export class seoMaquinariasService {
                 property: 'og:type', content: 'website'
             },
             {
-                property: 'og:title', content: `Maquinarias pesadas en ${this.country.name} | Easymaq`
+                property: 'og:title', content: `Maquinarias pesadas en ${this.country.name} | Marketmaq`
             },
             {
-                property: 'og:url', content: `http://easymaq.com/${this.country.code}`
+                property: 'og:url', content: `http://marketmaq.com/${this.country.code}`
             },
             {
                 property: 'og:image', content: 'https://lh3.googleusercontent.com/-6OhxaFoBDOs/WUgrqUjThNI/AAAAAAAAA1w/g7UgmhIQrloDiEmuPQPvoQyywQp5HWKYwCL0BGAYYCw/h630/2017-06-19.png'
@@ -57,7 +57,7 @@ export class seoMaquinariasService {
                 property: 'og:description', content: `Busque su maquinaria pesada en ${this.country.name}, utilizando los filtros especializados por empresa, marca, categoria, tipo o condición.`
             },
             {
-                property: 'og:site_name', content: 'Easymaq'
+                property: 'og:site_name', content: 'Marketmaq'
             },
             {
                 name: 'twitter:card', content: 'summary'
@@ -66,7 +66,7 @@ export class seoMaquinariasService {
                 name: 'twitter:site', content: '@easy_maq'
             },
             {
-                name: 'twitter:title', content: `Maquinarias pesadas en ${this.country.name} | Easymaq`
+                name: 'twitter:title', content: `Maquinarias pesadas en ${this.country.name} | Marketmaq`
             },
             {
                 name: 'twitter:image', content: 'https://lh3.googleusercontent.com/-6OhxaFoBDOs/WUgrqUjThNI/AAAAAAAAA1w/g7UgmhIQrloDiEmuPQPvoQyywQp5HWKYwCL0BGAYYCw/h630/2017-06-19.png'

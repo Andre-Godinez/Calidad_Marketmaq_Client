@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // modulos
 import { BaseModule } from './reusables/base/base.module';
 import { EasymodalModule } from './reusables/easymodal/easymodal.module';
+import { WhatsappModule } from './reusables/whatsapp/whatsapp.module';
 
 // Routes
 import { APP_ROUTING } from './app.routes';
@@ -53,7 +54,7 @@ import { UserService } from './theme/services/api/usuario.service';
   ],
   imports: [
     BrowserModule.withServerTransition({
-      appId: 'easymaq-seo'
+      appId: 'marketmaq-seo'
     }),
     MaterialModule,
     BaseModule,
@@ -97,6 +98,7 @@ export class AppModule { } */
     BrowserModule,
     MaterialModule,
     BaseModule,
+    WhatsappModule,
     NgbModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,

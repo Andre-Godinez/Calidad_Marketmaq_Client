@@ -8,15 +8,17 @@
         </div>
         <div class="eq-logo">
           <a [routerLink]="['/'+fcountry.name+'/home']">
-            <img src="assets/icon/easymaq_logo.png" alt="Logo de easymaq - Peru">
+            <img src="assets/img/LogoOficial.png" alt="Logo de marketmaq - Peru">
           </a>
         </div>
       </div>
       <div class="header-right">
 
         <div class="menu-padre">
-          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">Alquiler</div>
-          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">Venta</div>
+          <!-- <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">Alquiler</div> -->
+          <div routerLinkActive="active" class="menu-alquivenope">Alquiler</div>          
+          <!-- <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">Venta</div> -->
+          <div routerLinkActive="active" class="menu-alquivenope">Venta</div>
           <!--<div routerLinkActive = "active" class="menu-alquivenope" [routerLink]="['/operarios/operarios-categoria-eq']">Operarios</div>-->
         </div>
 
@@ -25,12 +27,11 @@
           <!-- icon lupa -->
           <i class="material-icons" (click)="btBuscar = !btBuscar; eqFondo=true">search</i>
         </div>
-        <!-- <h2 class="eq-link-publicar" [routerLink]="['/'+fcountry.name+'/publicar-corporativo']">
+       
+        <a href="http://localhost:4300/"class="eq-link-publicar" target="_blank">
+          <!-- <a >publicar</a> -->
           publicar
-        </h2> -->
-        <h2 class="eq-link-publicar">
-          publicar
-        </h2>
+        </a>
         <div *ngIf="!_loginService.usuarioEasymaq" (click)="btLogin = true" class="eq-login">
           ingresar o registrarse
         </div>
@@ -49,7 +50,8 @@
           <div [ngClass]="{'active': btOptions}" class="eq-content-options">
             <ul>
               <li class="item-option">
-                <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']">
+                <!-- <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']"> -->
+                <a>    
                   <div class="option-icon"><i class="material-icons">favorite</i></div>
                   <div class="option-menu-link">Mis favoritos</div>
                 </a>
@@ -129,29 +131,32 @@
             <div class="eq-icon"><i class="material-icons">camera_alt</i></div>
             <div class="eq-menu-link">Publicar</div>
           </a> -->
-          <a>
+          <a  href="http://localhost:4300/">
             <div class="eq-icon"><i class="material-icons">camera_alt</i></div>
             <div class="eq-menu-link">Publicar</div>
           </a>
+  
         </li>
         <li class="eq-menu-item">
-          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">
+          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}"> -->
+          <a>            
             <div class="eq-icon"><i class="material-icons">shopping_cart</i></div>
             <div class="eq-menu-link">Venta</div>
           </a>
         </li>
         <li class="eq-menu-item">
-          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">
+          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}"> -->
+          <a>            
             <div class="eq-icon"><i class="icon-menu-maquina"></i></div>
             <div class="eq-menu-link">Alquiler</div>
           </a>
         </li>
-        <li class="eq-menu-item">
+        <!-- <li class="eq-menu-item">
           <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']" >
               <div class="eq-icon"><i class="material-icons">favorite</i></div>
               <div class="eq-menu-link">Mis favoritos</div>
           </a>
-        </li>
+        </li> -->
         <!--<li class="eq-menu-item">
           <a [routerLink]="['/operarios/operarios-categoria-eq']">
             <div class="eq-icon"><i class="icon-Operario"></i></div>
@@ -194,29 +199,7 @@
 
 
 
-<!-- Inicio Buscador - Mobile -->
-<section>
-  <div [ngClass]="{active:btBuscar}" class="eq-content-buscar">
-    <div class="eq-select-buscador-general">
-      <div class="eq-pestanas">
-        <div [ngClass]="{'active':cli=='venta'}" (click)="valueOperacion='venta'; cli = 'venta';" class="item-pestana">Venta</div>
-        <div [ngClass]="{'active':cli=='alquiler'}" (click)="valueOperacion='alquiler'; cli = 'alquiler';" class="item-pestana">Alquiler</div>
-        <!--<div [ngClass]="{'active':cli=='operarios'}" (click)="valueOperacion='operarios'; cli = 'operarios';" class="item-pestana">Operarios</div>-->
-      </div>
-    </div>
-    <div class="eq-menu-buscar">
-      <div (click)="btMenu = false;btBuscar = false;eqFondo=false;" class="buscar-icon-atras">
-        <i class="material-icons">arrow_back</i>
-      </div>
-      <div class="eq-buscar-input">
-        <!-- <input type="text" [(ngModel)]="valueGeneral" name="valueGeneral" (keyup.enter)="buscadorGeneralEasymaq('mobile-maquinaria')"
-          placeholder="Buscar marca..."> -->
-      </div>
-      <div *ngIf="valueGeneral" (click)="limpiaBuscadorMobile()" class="buscar-icon-limpiar"><i class="material-icons">clear</i></div>
-    </div>
-  </div>
-</section>
-<!-- Inicio Buscador - Mobile -->
+
 
 
 <section>

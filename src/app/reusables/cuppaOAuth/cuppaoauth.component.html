@@ -3,7 +3,7 @@
 <div *ngIf="!_authService.isLoggedIn()" [ngClass]="{active:btnlogin}" class="eq-fondo-login">
   <div class="eq-container-login">
     <div (click)="btnlogin = false; btnreg='logeo'; lanzar($event);" class="eq-login-close">
-      <img src="assets/icon/close.png" alt="Icono easymaq para boton de cerrado login">
+      <img src="assets/icon/close.png" alt="Icono Marketmaq para boton de cerrado login">
     </div>
 
     <div [ngClass]="{active: btnreg=='logeo'}" class="eq-content-login">
@@ -26,7 +26,7 @@
           </div>
           <div class="eq-login-separador">&oacute;</div>
         </div> -->
-
+        <br>
         <form #formlogin="ngForm" class="eq-login-form" novalidate="novalidate">
           <div class="eq-login-email">
             <md-input-container class="full-width">
@@ -46,9 +46,9 @@
         </form>
 
         <div class="eq-login-access">
-          <div (click)="btnreg='recuperar'" class="eq-login-olvido">
+          <!-- <div (click)="btnreg='recuperar'" class="eq-login-olvido">
             ¿Olvidaste tu contraseña?
-          </div>
+          </div> -->
           <div (click)="btnreg='registro'" class="eq-login-registro">
             registrate
           </div>
@@ -76,7 +76,7 @@
           </div>
           <div class="eq-login-separador">&oacute;</div>
         </div> -->
-
+        <br>
         <form #formregister="ngForm" class="eq-login-form" novalidate="novalidate">
           <div class="eq-login-email">
             <md-input-container class="full-width">

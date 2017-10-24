@@ -1,5 +1,5 @@
 <section style="display:none">
-  <h1>Alquila, Compra y Vende Maquinarias | Easymaq</h1>
+  <h1>Alquila, Compra y Vende Maquinarias | Marketmaq</h1>
 </section>
 
 <app-header *ngIf="isBrowser" [clasepage]="clasepage"></app-header>
@@ -72,11 +72,11 @@
 <div class="inf_orange_div">
   <div class="inf-orange">
     <div class="if-o-title">
-      ¿Tienes muchas más máquinas<br>que vender?
+      ¿Necesitas ayuda para publicar con tu cuenta empresarial?
     </div>
     <div class="if-o-text">
-      <p>¡Ahorra con nuestros planes corporativos!</p>
-      <button (click)="informate =!informate">Infórmate aquí</button>
+      <p>¡Escribenos al whatsapp para ayudarte!</p>
+      <a href="https://api.whatsapp.com/send?phone=51957166065" target="_blank">Whatsapp</a>
     </div>
   </div>
 </div>
@@ -89,3 +89,4 @@
 </div>
 
 <app-footer *ngIf="isBrowser"></app-footer>
+<app-whatsapp></app-whatsapp>

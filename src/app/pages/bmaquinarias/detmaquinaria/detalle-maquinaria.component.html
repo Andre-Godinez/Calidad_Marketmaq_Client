@@ -32,7 +32,6 @@
       <div class="preview-detail-image">
         <div class="preview-detail-image_slider">
           <div *ngFor="let imagen of publication.urlImages" class="item-preview-image">
-            <!--<img [attr.data-lazy]="imagen" alt="Imagen de una maquinaria publicada en easymaq" (click)="imagenSeleccionada = imagen">-->
             <img style="cursor: pointer;" [src]="imagen" alt="Maquinaria pesada: {{ publication.category.name }} - marca: {{ publication.brand.name }} - modelo: {{ publication.modelo }}" (click)="imagenSeleccionada = imagen">
           </div>
         </div>
@@ -46,14 +45,12 @@
       <div class="preview-detail-mobile preview-mobile-slider">
         <ngb-carousel *ngIf="isBrowser">
           <div *ngFor="let imagen of publication.urlImages">
-            <!-- <img [attr.data-lazy]="imagen" alt="Maquinaria publicada en easymaq"> -->
             <ng-template ngbSlide>
               <img [src]="imagen" alt="Maquinaria pesada: {{ publication.category.name }} - marca: {{ publication.brand.name }} - modelo: {{ publication.modelo }}">
             </ng-template>
           </div>
         </ngb-carousel>
         <!-- <div *ngFor="let imagenmob of publication.urlImages" class="">
-          <img [src]="imagenmob" alt="Imagen de una maquinaria publicada en easymaq">
         </div> -->
       </div>
     </div>

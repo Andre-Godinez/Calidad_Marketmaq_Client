@@ -16,7 +16,7 @@ export class CorporativoComponent implements OnInit {
   inf:boolean=true;
    misdatosdataconfig: any = {
         'activemodal': false,
-        'titulo': 'Mensaje de Easymaq',
+        'titulo': 'Mensaje de Marketmaq',
         'descripcion': 'En unos momentos le estaremos informando a su correo'
 
   };

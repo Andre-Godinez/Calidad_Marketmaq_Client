@@ -412,7 +412,8 @@
             @include media(sm){
                 text-align:center;
             }
-            button{
+            a{
+                padding: 10px 20px;
                 cursor: pointer;
                 box-shadow: $border-shadow-bread;
                 background: white;

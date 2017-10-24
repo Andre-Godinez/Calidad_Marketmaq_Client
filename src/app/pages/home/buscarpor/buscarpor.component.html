@@ -2,7 +2,7 @@
   <div class="container-filter">
     <h3  class="label-buscar">Busca por</h3>
     <div class="content-select-filter">
-      <div (click)="btnbusca='empresa'" [class.active]="btnbusca==='empresa'" class="select-filter">empresa</div>
+      <!-- <div (click)="btnbusca='empresa'" [class.active]="btnbusca==='empresa'" class="select-filter">empresa</div> -->
       <div (click)="btnbusca='marca'" [class.active]="btnbusca==='marca'" class="select-filter">marca</div>
       <div (click)="btnbusca='categoria'" [class.active]="btnbusca==='categoria'" class="select-filter">categorias</div>
     </div>
@@ -40,7 +40,8 @@
           class="container-busca principal">
       <ul [ngClass]="{'ver-mas': !(btnver=='marca')}" class="content-lista">
         <li *ngFor="let marca of listaMarcas" class="content-marca-item">
-          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{brandId: marca.id}">
+          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{brandId: marca.id}"> -->
+          <a href="#">
             <div class="content-item">
               <div class="content-info">
                 <div class="image-item">
@@ -70,7 +71,8 @@
           class="container-busca principal">
       <ul [ngClass]="{'ver-mas': !(btnver=='categoria')}" class="content-lista">
         <li *ngFor="let categoria of listaCategorias; let i = index" class="content-marca-item">
-          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{categoryId: categoria.id}">
+          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{categoryId: categoria.id}"> -->
+          <a href="#">            
             <div class="content-item">
               <div class="content-info title-category">
                 <div class="image-item">

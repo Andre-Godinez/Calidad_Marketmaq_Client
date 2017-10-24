@@ -62,7 +62,7 @@ export class SliderComponent implements OnInit {
     this.fcountry = this._utilsService.asignateCountry();
   }
 
-  buscadorEasymaq(): void {
+  buscadorMarketmaq(): void {
     let query = this.valueText.trim().replace(/ +/g, ' ').toLowerCase();
     if (query !== ' ' && query !== '') {
       this.router.navigate([`/${this.fcountry.name}/maquinarias`], { queryParams: { query: query, type: this.cli } });

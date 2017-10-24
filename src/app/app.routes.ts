@@ -34,7 +34,9 @@ import { Workcountry } from './theme/datastatic/workcountry.class';
 export let APP_ROUTES: Routes = (new routeGenerate).routerTwo; */
 
 export const APP_ROUTES: Routes = [
-  { path: 'home', component: OriginComponent },
+  // { path: 'home', component: OriginComponent },
+  
+  { path: 'pe/home', component: HomeComponent },
 
   { path: 'ar/home', component: HomeComponent },
   { path: 'bo/home', component: HomeComponent },
@@ -178,7 +180,7 @@ export const APP_ROUTES: Routes = [
 
 
 
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: '**', pathMatch: 'full', redirectTo: 'pe/home' }
 ];
 
 export let APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules });

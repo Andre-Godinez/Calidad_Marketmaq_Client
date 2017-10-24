@@ -347,7 +347,7 @@
         <div class="eq-maquina-image">
           <div class="totally-item">
             <div (click)="administrar(maquina.$key)" *ngFor="let imagen of maquina.imagenes.split(',')">
-              <img [attr.data-lazy]="imagen" alt="Maquinaria publicada en easymaq">
+              <img [attr.data-lazy]="imagen" alt="Maquinaria publicada en Marketmaq">
             </div>
           </div>
           <div class="count-img">
@@ -407,7 +407,7 @@
     <div class="contentcar list-premium" *ngFor="let maquina of listaMaquinariasPremiun; let i = index">
       <div class="eq-slide-card card-maq-new">
         <div class="eq-maquina-image">
-          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en Marketmaq">
           <div class="count-img">
             <span>{{ maquina.imagenes.split(',').length}}</span>
             <i class="icon-Cam-2"></i>
@@ -464,7 +464,7 @@
     <div class="contentcar list-destacado" *ngFor="let maquina of listaMaquinariasDestacadas; let i = index">
       <div class="eq-slide-card card-maq-new">
         <div class="eq-maquina-image">
-          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en Marketmaq">
         </div>
         <div class="right-maq">
           <div class="eq-maquina-title">
@@ -523,7 +523,7 @@
     <div class="contentcar" *ngFor="let maquina of listaMaquinarias; let i = index">
       <div class="eq-slide-card card-maq-new">
         <div class="eq-maquina-image">
-          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en easymaq">
+          <img (click)="administrar(maquina.$key)" [src]="maquina.imagenes.split(',')[0]" alt="Maquinaria publicada en Marketmaq">
           <div [ngClass]="{'active-favorite-maq': maquina.favorito}" class="container-star-maq">
             <div class="maquina-star border-favorite opera-star" (click)="maquina.favorito = addFavorite(maquina.$key, 'publicacion');">
               <i class="material-icons">favorite_border</i>
