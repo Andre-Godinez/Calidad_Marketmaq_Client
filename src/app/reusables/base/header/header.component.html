@@ -51,7 +51,7 @@
             <ul>
               <li class="item-option">
                 <!-- <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']"> -->
-                <a>    
+                <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']">    
                   <div class="option-icon"><i class="material-icons">favorite</i></div>
                   <div class="option-menu-link">Mis favoritos</div>
                 </a>
@@ -151,12 +151,12 @@
             <div class="eq-menu-link">Alquiler</div>
           </a>
         </li>
-        <!-- <li class="eq-menu-item">
+        <li class="eq-menu-item" *ngIf="isLogeado">
           <a [routerLink]="['/'+fcountry.name+'/mis-favoritos']" >
               <div class="eq-icon"><i class="material-icons">favorite</i></div>
               <div class="eq-menu-link">Mis favoritos</div>
           </a>
-        </li> -->
+        </li>
         <!--<li class="eq-menu-item">
           <a [routerLink]="['/operarios/operarios-categoria-eq']">
             <div class="eq-icon"><i class="icon-Operario"></i></div>

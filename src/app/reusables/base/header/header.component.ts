@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   @Output() pasaBtnheader = new EventEmitter();
   btOptions: boolean = false;
   eqFondo: boolean = false;
-
+  isLogeado:boolean = false;
   // Texto ingresado en el buscador General
   valueGeneral: string = '';
   alq: boolean = false;
@@ -75,6 +75,10 @@ export class HeaderComponent implements OnInit {
     if (!this.btLogin) {
       this.btLogin = false;
     }
+    if(JSON.parse(localStorage.getItem('token'))){
+      this.isLogeado = !this.isLogeado;
+      console.log(this.isLogeado);
+    }
   }
 
   showBtnlogin(event) {
@@ -84,6 +88,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this._loginService.logout();
+    this.isLogeado = false;
   }
 
 }

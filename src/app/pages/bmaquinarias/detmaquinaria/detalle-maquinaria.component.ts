@@ -28,7 +28,7 @@ export class DetalleMaquinariaComponent implements OnInit, OnDestroy {
   subService: Subscription;
 
   btRanking: boolean = false;
-
+  datosContacto: boolean=false;
   titlerank: any;
   starsrank: any;
   descriprank: any;
@@ -134,6 +134,16 @@ export class DetalleMaquinariaComponent implements OnInit, OnDestroy {
             this.descriprank = res.description;
             console.log(this.titlerank)
           })
+      }
+    }
+  }
+  showDatosContacto(){
+    if(this.isBrowser){
+      let user = JSON.parse(localStorage.getItem('token'));
+      if(user){
+        this.datosContacto = !this.datosContacto;        
+      }else{
+        this.confirm('Inicie sesion para acceder a los datos de contacto')
       }
     }
   }

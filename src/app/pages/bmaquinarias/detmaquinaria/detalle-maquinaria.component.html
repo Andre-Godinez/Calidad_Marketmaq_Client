@@ -114,11 +114,11 @@
               <i class="material-icons rojo">favorite</i>
             </div>
           </div>
-          <div class="container-shared detail-mpub__common">
+          <!-- <div class="container-shared detail-mpub__common">
             <i class="material-icons cm_color shared-icon" (click)="sbtns=!sbtns">share</i>
             <share-buttons [url]="linkshared" *ngIf="sbtns" class="cnt-shared fadeIn">
             </share-buttons>
-          </div>
+          </div> -->
 
           <!--<div class="detail-mpub__sharedbtns">
                  </div>-->
@@ -138,9 +138,16 @@
         <li>CONDICIÓN: <span> {{ publication.condicion }} </span></li>
         <li>DIRECCIÓN: <span>{{ publication.uDireccion }}</span></li>
         <li *ngIf="publication.horasMaquina">HORAS/MAQUINA TRABAJADAS:<span>{{ publication.horasMaquina }}</span></li>
-        <li *ngIf="publication.ctPhone01">TELÉFONO 01: <span>{{ publication.ctPhone01 }}</span></li>
+        <!-- <li *ngIf="publication.ctPhone01">TELÉFONO 01: <span>{{ publication.ctPhone01 }}</span></li>
         <li *ngIf="publication.ctPhone02">TELÉFONO 02: <span>{{ publication.ctPhone02 }}</span></li>
-        <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li>
+        <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li> -->
+        <li class="datos-contacto" (click)="showDatosContacto()"> Datos de contacto
+          <ul *ngIf="datosContacto">
+            <li *ngIf="publication.ctPhone01">TELÉFONO 01: <span>{{ publication.ctPhone01 }}</span></li>
+            <li *ngIf="publication.ctPhone02">TELÉFONO 02: <span>{{ publication.ctPhone02 }}</span></li>
+            <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li>
+          </ul>
+        </li>
         <li *ngIf="publication.company.website">WEBSITE:
           <span>
             <a class="url" [href]="'http://'+publication.company.website" target="_blanck" >
@@ -151,6 +158,11 @@
       </ul>
       <div class="detail-mpub__descripcion" [ngClass]="{'viewtext': viewmore}">
         <p>{{ publication.description }}</p>
+        <!-- <ul>
+          <li *ngIf="publication.ctPhone01">TELÉFONO 01: <span>{{ publication.ctPhone01 }}</span></li>
+          <li *ngIf="publication.ctPhone02">TELÉFONO 02: <span>{{ publication.ctPhone02 }}</span></li>
+          <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li>
+        </ul> -->
         <button (click)="viewmore = !viewmore" class="viewbtn view-more">Ver mas</button>
         <button (click)="viewmore = !viewmore" class="viewbtn view-less">Ver menos</button>
       </div>
@@ -158,7 +170,7 @@
       <div class="detail-mpub_contact">
         <div class="price-detail-pub">PRECIO:
           <div *ngIf="!publication.prConsultar" class="detalle-precio">{{ (publication.prMoneda === 'dolares' ? '$' : 'S/') }} {{ publication.prPrecio | number:'1.2-2' }}</div>
-          <div *ngIf="publication.prConsultar" class="detalle-precio"> {{ 'CONSULTAR' }}</div>
+          <div *ngIf="publication.prConsultar" class="detalle-precio"> {{ 'A CONSULTAR' }}</div>
         </div>
         <!-- <button class="rad-button" (click)="irChat()">
               <p-confirmDialog header="Información" width="425"></p-confirmDialog>

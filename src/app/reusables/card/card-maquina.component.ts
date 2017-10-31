@@ -21,7 +21,7 @@ import { UbigeoStatic } from "../../theme/datastatic/ubigeo.class";
           <ngb-carousel>
             <div *ngFor="let imagen of maquina.urlImages">
               <ng-template ngbSlide>
-                <a>                
+                <a [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">                
                   <img [src]="imagen" alt="Maquinaria pesada: {{ maquina.category.name }} - marca: {{ maquina.brand.name }} - modelo: {{ maquina.modelo }}">
                 </a>
               </ng-template>
@@ -58,8 +58,8 @@ import { UbigeoStatic } from "../../theme/datastatic/ubigeo.class";
         </div>
         <div class="price-points">
           <div class="price-maqs">
-            <a *ngIf="!maquina.prConsultar" class="detalle-precio">{{ (maquina.prMoneda === 'dolares' ? '$' : 'S/') }} {{ maquina.prPrecio | number:'1.2-2' }}</a>
-            <a *ngIf="maquina.prConsultar" class="detalle-precio"> {{ 'CONSULTAR' }}</a>
+            <a *ngIf="!maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]">{{ (maquina.prMoneda === 'dolares' ? '$' : 'S/') }} {{ maquina.prPrecio | number:'1.2-2' }}</a>
+            <a *ngIf="maquina.prConsultar" class="detalle-precio" [routerLink]="['/'+fcountry.name+'/maquinarias/'+maquina.id]"> {{ 'CONSULTAR' }}</a>
           </div>
           <div class="content-rating-stars" *ngIf="maquina.rkStarTotal && maquina.rkStarTotal >= 0">
             <div class="ratingControl">
