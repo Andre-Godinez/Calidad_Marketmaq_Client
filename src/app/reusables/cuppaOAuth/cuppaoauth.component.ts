@@ -58,6 +58,10 @@ export class cuppaOAuth implements OnInit {
   showBtnmodal(event) {
     this.logindataconfig.activemodal = event.nameBtnmodal;
   }
+  confirm(text:string){
+    this.logindataconfig.activemodal=true;
+    this.logindataconfig.descripcion=text;
+  }
 
   login(proveedor: string, email?: string, pass?: string, pru?: any) {
     if (proveedor == 'email') {
@@ -73,6 +77,9 @@ export class cuppaOAuth implements OnInit {
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('provider', proveedor);
           this._loginService.updateLogin();
+        },err=>{
+          console.log(err);
+          this.confirm(err)
         });
       }
     } else {
@@ -92,6 +99,12 @@ export class cuppaOAuth implements OnInit {
       }).subscribe((res: any) => {
         console.log('res: ', res);
         this.login('email',email,pass);
+      },err=>{
+        // this.login('email',email,pass)
+        console.log(err)
+        if(err==='Error al enviar email'){
+          this.login('email',email,pass);        
+        }
       });
     }
   }
