@@ -64,7 +64,7 @@ export class UserService {
   }
 
   register(obj?: any): Observable<any> {
-    let query: string = `${this.url}/usuarios`;
+    let query: string = `${this.url}/usuarios-normal`;
     let data = JSON.stringify({
       email: obj.email,
       password: obj.password
