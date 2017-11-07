@@ -8,18 +8,15 @@
         </div>
         <div class="eq-logo">
           <a [routerLink]="['/'+fcountry.name+'/home']">
-            <img src="assets/img/LogoOficial.png" alt="Logo de marketmaq - Peru">
+            <img src="assets/img/LogoOficial.png" height="72px" width="253px" alt="Logo de marketmaq - Peru">
           </a>
         </div>
       </div>
       <div class="header-right">
 
         <div class="menu-padre">
-          <!-- <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">Alquiler</div> -->
-          <div routerLinkActive="active" class="menu-alquivenope">Alquiler</div>          
-          <!-- <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">Venta</div> -->
-          <div routerLinkActive="active" class="menu-alquivenope">Venta</div>
-          <!--<div routerLinkActive = "active" class="menu-alquivenope" [routerLink]="['/operarios/operarios-categoria-eq']">Operarios</div>-->
+          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">Alquiler</div>
+          <div routerLinkActive="active" class="menu-alquivenope" [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">Venta</div>
         </div>
 
 
@@ -138,15 +135,13 @@
   
         </li>
         <li class="eq-menu-item">
-          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}"> -->
-          <a>            
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'venta'}">
             <div class="eq-icon"><i class="material-icons">shopping_cart</i></div>
             <div class="eq-menu-link">Venta</div>
           </a>
         </li>
         <li class="eq-menu-item">
-          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}"> -->
-          <a>            
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{type: 'alquiler'}">
             <div class="eq-icon"><i class="icon-menu-maquina"></i></div>
             <div class="eq-menu-link">Alquiler</div>
           </a>

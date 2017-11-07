@@ -44,6 +44,8 @@ export class Maquinarias implements OnInit, OnDestroy {
   filcategorias: boolean = false;
   filtipos: boolean = true;
   filcondicion: boolean = true;
+  visible:boolean=false;
+  
 
   p: number = 1;
 
@@ -302,6 +304,7 @@ export class Maquinarias implements OnInit, OnDestroy {
   }
 
   pedir(): void {
+    this.visible=true;
     let subPublication: Subscription
     if (this.params.toString()) {
       console.log(this.params.toString());
@@ -319,6 +322,7 @@ export class Maquinarias implements OnInit, OnDestroy {
               }
             }
           });
+          this.visible=false;
           this.publications = res;
           subPublication.unsubscribe();
         })
@@ -337,6 +341,7 @@ export class Maquinarias implements OnInit, OnDestroy {
               }
             }
           });
+          this.visible=false;
           this.publications = res;
           subPublication.unsubscribe();
         })

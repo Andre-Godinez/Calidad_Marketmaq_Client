@@ -2689,3 +2689,11 @@ footer{
 .content-rating-stars{
  cursor: pointer;
 }
+.mat-spinner.mat-primary{
+	svg{
+    transition: all 1s ease;
+		path{
+			stroke:$accent-color;
+		}
+	}
+}

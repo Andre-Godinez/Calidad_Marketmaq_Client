@@ -94,6 +94,10 @@
             }
         }
         .container-new.p-cont.container-maqs-fade{
+            .no-busq{
+                display: flex;
+                justify-content: center;
+              }
             width: 75%;
              @media screen and (max-width:480px){
                 padding-left: 40px;

@@ -20,6 +20,8 @@ import { AgmCoreModule } from '@agm/core';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
 import { RankingModule } from '../../reusables/ranking/ranking.module';
 import { EasymodalModule } from '../../reusables/easymodal/easymodal.module';
+import { MdProgressSpinnerModule } from '@angular/material';
+
 /* import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
@@ -44,6 +46,7 @@ import { routing } from './maquinarias.routing';
     NgbModule,
     RankingModule,
     EasymodalModule,
+    MdProgressSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBgPba9ENKjx2AD7IOG2SIFN3x5WYAKqo4'
     }),

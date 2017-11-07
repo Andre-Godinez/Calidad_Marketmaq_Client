@@ -315,9 +315,11 @@ nav.content-header.general{
                    transition:all 0.35s ease;
                     @include media(minxs) {
                         height: 27px;
+                        width: 110px;
                     }
                     @include media(maxxs) {
                         height: 27px;
+                        width: 110px;
                     }
                     @include media(sm) {
                         padding: 5px 0 0 45px;
@@ -542,9 +544,11 @@ nav.content-header.home{
                     transition:all 0.35s ease;
                     @include media(minxs) {
                         height: 27px;
+                        width: 110px;
                     }
                     @include media(maxxs) {
                         height: 27px;
+                        width: 110px;
                     }
                     @include media(tbland){
                         max-width: 200px;

@@ -40,8 +40,7 @@
           class="container-busca principal">
       <ul [ngClass]="{'ver-mas': !(btnver=='marca')}" class="content-lista">
         <li *ngFor="let marca of listaMarcas" class="content-marca-item">
-          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{brandId: marca.id}"> -->
-          <a href="#">
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{brandId: marca.id}">
             <div class="content-item">
               <div class="content-info">
                 <div class="image-item">
@@ -71,8 +70,7 @@
           class="container-busca principal">
       <ul [ngClass]="{'ver-mas': !(btnver=='categoria')}" class="content-lista">
         <li *ngFor="let categoria of listaCategorias; let i = index" class="content-marca-item">
-          <!-- <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{categoryId: categoria.id}"> -->
-          <a href="#">            
+          <a [routerLink]="['/'+fcountry.name+'/maquinarias']" [queryParams]="{categoryId: categoria.id}">
             <div class="content-item">
               <div class="content-info title-category">
                 <div class="image-item">
@@ -81,7 +79,7 @@
                 <div class="title-item title-category">{{ categoria.name }}</div>
               </div>
               <div class="content-detail">
-                <div class="title-cantidad">-</div>
+                <!-- <div class="title-cantidad">-</div> -->
                 <div class="btn-ver">ver +</div>
               </div>
             </div>

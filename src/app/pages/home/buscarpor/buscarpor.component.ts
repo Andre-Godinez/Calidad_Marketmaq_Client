@@ -60,11 +60,13 @@ export class BuscarporComponent implements OnInit, OnDestroy {
       this.subBrand = this._brandService.get()
         .subscribe(res => {
           this.listaMarcas = res;
+          console.log(this.listaMarcas)
         })
 
       this.subCategory = this.categoryService.get()
         .subscribe((res: Category[]) => {
           this.listaCategorias = res;
+          console.log(this.listaCategorias);
         })
 
       this.subCompany = this.companyService.get()
