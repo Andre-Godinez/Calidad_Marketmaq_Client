@@ -148,13 +148,13 @@
             <li *ngIf="publication.ctEmail">EMAIL: <span><a href="mailto:{{publication.ctEmail}}"> {{ publication.ctEmail }}</a></span></li>
           </ul>
         </li>
-        <li *ngIf="publication.company.website">WEBSITE:
+        <!-- <li *ngIf="publication.company.website">WEBSITE:
           <span>
             <a class="url" [href]="'http://'+publication.company.website" target="_blanck" >
               {{ publication.company.website }}
             </a>
           </span>
-        </li>
+        </li> -->
       </ul>
       <div class="detail-mpub__descripcion" [ngClass]="{'viewtext': viewmore}">
         <p>{{ publication.description }}</p>

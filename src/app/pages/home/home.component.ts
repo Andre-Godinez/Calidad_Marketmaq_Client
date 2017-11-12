@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
 
   actualizarslider(type) {
     let countryId = this.fcountry.id;
-    let query = `?order=DESC&type=${type}&limit=7&countryId=${countryId}`;
+    let query = `?order=DESC&type=${type}&limit=8&countryId=${countryId}`;
     let ultp = this._publicationService.get(query).
       subscribe(res => {
         if(type==='venta'){
